@@ -22,8 +22,8 @@ public abstract class Zombie extends Sprite {
 		super();
 		this.role = PlayerRole.ZOMBIE;
 		this.reveal = 700;
-		this.sound = new Sound("res/music/creepy-low-voice.wav");
-		this.sound_die_path = "res/music/man-dying.wav";
+		this.sound = new Sound(Config.VOICE_ZOMBIE_SELECTED);
+		this.sound_die_path = Config.VOICE_DIE;
 	}
 
 	// @Override

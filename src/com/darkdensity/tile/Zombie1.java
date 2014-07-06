@@ -14,6 +14,6 @@ public class Zombie1 extends Zombie{
 		this.attack = Config.ZOMBIE1_ATTACK;
 		this.defense = 40;
 		this.reveal = Config.ZOMBIE1_REVEAL;
-		this.sound = new Sound("res/music/deep-monster-roar-2.wav");
+		this.sound = new Sound(Config.VOICE_ZOMBIE_SELECTED_2);
 		}
 }

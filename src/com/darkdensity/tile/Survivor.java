@@ -11,8 +11,8 @@ public abstract class Survivor extends Sprite {
 		super();
 		this.role = PlayerRole.SURVIVOR;
 		this.reveal = 800;
-		this.sound = new Sound("res/music/yes sir.wav");
-		this.sound_die_path = "res/music/man-dying.wav";
+		this.sound = new Sound(Config.VOICE_HUMAN_SELECTED);
+		this.sound_die_path = Config.VOICE_DIE;
 	}
 
 //	public Survivor(GameWorld gameWorld, int x, int y)

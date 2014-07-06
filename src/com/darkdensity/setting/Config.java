@@ -92,16 +92,26 @@ public class Config {
 	public static final String MINIMAP_PATH = IMAGES_PATH + "map/minimap/";
 	public static final String LOADING_PATH = IMAGES_PATH + "loading/";
 
-	public static final String BACKGROUND_MUSIC_PATH = MUSIC_PATH
-			+ "underwater-delusion.wav";
+	
 	public static final String CURSOR_PATH = IMAGES_PATH + "cursor/normal.png";
-	public static final String MUSIC_WINNING_PATH = MUSIC_PATH + "you_win.wav";
 	public static final String IMG_WINNING_PATH = IMAGES_PATH + "Humanwin.png";
 	public static final String IMG_LOSING_PATH = IMAGES_PATH + "Zombiewin.png";
-	public static final String MUSIC_LOSING_PATH = MUSIC_PATH + "you_lose.wav";
+	
 	public static final String LOOBY_BACKGROUND = IMAGES_PATH
 			+ "lobby/gameLobby.png";
 	
+	//sound and music
+	public static final String MUSIC_LOSING_PATH = MUSIC_PATH + "you_lose.wav";
+	public static final String MUSIC_WINNING_PATH = MUSIC_PATH + "you_win.wav";
+	public static final String BACKGROUND_MUSIC_PATH = MUSIC_PATH + "underwater-delusion.wav";
+	
+	public static final String VOICE_HUMAN_SELECTED = MUSIC_PATH + "yes sir.wav";
+	public static final String VOICE_ZOMBIE_SELECTED = MUSIC_PATH + "creepy-low-voice.wav";
+	
+	public static final String VOICE_ZOMBIE_SELECTED_2 = MUSIC_PATH + "deep-monster-roar-2.wav";
+	public static final String VOICE_DIE = MUSIC_PATH + "man-dying.wav";
+	
+	//ICON
 	public static final String ICON_FOOD = IMAGES_PATH + "icon/food.png";
 	public static final String ICON_WOOD = IMAGES_PATH + "icon/Dzwood.gif";
 	public static final String ICON_IRON = IMAGES_PATH + "icon/Dzmetal.gif";
