@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+encoding//res/json/biDirNodes.json=UTF-8
+encoding//src/com/darkdensity/core/ControlManager.java=UTF-8
+encoding//src/com/darkdensity/gui/MiniMapPanel.java=UTF-8
+encoding//src/com/darkdensity/maprender/GridMap.java=UTF-8
+encoding//src/com/darkdensity/path/AStarNode.java=UTF-8
+encoding//src/com/darkdensity/path/AStarSearch.java=UTF-8
+encoding//src/com/darkdensity/path/SimpleAStarNode.java=UTF-8
+encoding//src/com/darkdensity/path/SimpleAStarSearch.java=UTF-8
+encoding//src/com/darkdensity/path/SubPathManager.java=UTF-8
+encoding//src/com/darkdensity/setting/NLS.java=UTF-8
+encoding//src/com/darkdensity/setting/NLS_zh.java=UTF-8
