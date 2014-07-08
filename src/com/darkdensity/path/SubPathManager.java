@@ -165,6 +165,7 @@ public class SubPathManager implements Observer {
 	}
 	
 	public static Pair<Point, Point> findPair (Point middlePoint){
+		//System.out.println(crossesTable==null?"crossestable null":"crossestable not null");
 		Enumeration<Point> keys = crossesTable.keys();
 		double nearestDis = 100;
 		Pair<Point, Point> nearerPair = null;

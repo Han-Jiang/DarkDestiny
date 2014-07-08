@@ -1,7 +1,9 @@
 package com.darkdensity.net.lobby;
 
 import com.darkdensity.setting.Constant.PlayerRole;
-
+/** 
+* @author Team A1 - Hei Yin Wong
+*/
 public class SwapTeamRequest extends GameRequest{
 
 	

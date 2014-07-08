@@ -12,6 +12,12 @@ import com.darkdensity.maprender.Grid;
 import com.darkdensity.maprender.GridMap;
 import com.darkdensity.setting.Constant.Direction;
 
+/**
+* @ClassName: AStarSearch
+* @Description: Astar Search to search every grids from start point to destination
+* @author Team A1 - Yingjing Feng
+*/
+
 public class AStarSearch {
 	AStarNode beginNode; 
 	AStarNode endNode; 
@@ -25,7 +31,7 @@ public class AStarSearch {
 	private GridMap map;
 
 	private int availableRange = 1;
-	int maxNodesNum = 300;
+	int maxNodesNum = 100;
 	
 	private int searchMode = 2;
 	/**
@@ -44,8 +50,6 @@ public class AStarSearch {
 	public AStarSearch(AStarNode bNode, AStarNode eNode, int maxNodesNum) {
 		this.beginNode = new AStarNode(bNode);
 		this.endNode = new AStarNode(eNode);
-//		this.beginNode = new AStarNode(nearestAvailableAStarNode(bNode));
-//		this.endNode = new AStarNode(nearestAvailableAStarNode(eNode));
 		this.currentNode = new AStarNode(bNode);
 		this.openList = new Vector<AStarNode>();
 		this.closeList = new Vector<AStarNode>();
@@ -60,37 +64,6 @@ public class AStarSearch {
 		eNode.setMap(this.map);
 	}
 
-//	public AStarNode nearestAvailableAStarNode(AStarNode aStarNode){
-//		System.out.println("*****************A****************");
-//		int tilex = aStarNode.getPos().x/aStarNode.accuracy;
-//		int tiley = aStarNode.getPos().y/aStarNode.accuracy;
-//		if(map.getGrid(tilex, tiley)!=null){
-//			System.out.println("*****************B****************");
-//			return aStarNode;
-//		}
-//		System.out.println("*****************C****************");
-//		for(int i=0; i<availableRange; i++){
-//			if(GridMapManager.gridMap.getGrid(tilex, tiley+i)!=null){
-//				return( new AStarNode(tilex*aStarNode.accuracy,(tiley+i)*aStarNode.accuracy));
-//			}
-//			if(GridMapManager.gridMap.getGrid(tilex, tiley-i)!=null){
-//				return( new AStarNode(tilex*aStarNode.accuracy,(tiley-i)*aStarNode.accuracy));
-//			}
-//			if(GridMapManager.gridMap.getGrid(tilex-i, tiley+i)!=null){
-//				return (new AStarNode((tilex-i)*aStarNode.accuracy,(tiley+i)*aStarNode.accuracy));
-//			}
-//			if(GridMapManager.gridMap.getGrid(tilex-i, tiley-i)!=null){
-//				return (new AStarNode((tilex-i)*aStarNode.accuracy,(tiley-i)*aStarNode.accuracy));
-//			}
-//			if(GridMapManager.gridMap.getGrid(tilex+i, tiley+i)!=null){
-//				return( new AStarNode((tilex+i)*aStarNode.accuracy,(tiley+i)*aStarNode.accuracy));
-//			}
-//			if(GridMapManager.gridMap.getGrid(tilex+i, tiley-i)!=null){
-//				return( new AStarNode((tilex+i)*aStarNode.accuracy,(tiley-i)*aStarNode.accuracy));
-//			}
-//		}
-//		return null;
-//	}
 	public void setMap(GridMap map) {
 		this.map = map;
 	}
@@ -139,32 +112,16 @@ public class AStarSearch {
 			this.closeList.addElement(this.currentNode);
 			searchedNodesNum++;
 
-			// to record and show the searching procedure
-//			pw.println("Searching.....Number of searched nodes:"
-//					+ this.closeList.size()
-//					+ "   Current state:"
-//					+ this.currentNode.getTile().toString()
-//					+ "parent Node:"
-//					+ (this.currentNode.getParent() == null ? ""
-//							: this.currentNode.getParent().getTile().toString()));
-
-			// (2-3) Find the neighbouring grids of the current node
-			// 		 set the current node as their parent node
-			// 		 sort them according to the estimated value (from small to big) and append them to the openList.
-
 			followNodes = this.findFollowaNodes(this.currentNode);
 			//System.out.print("currentNode"+currentNode.getTile()+"follow"+followNodes.size());
 			while (!followNodes.isEmpty()) {
 				this.sortedInsertOpenList((AStarNode) followNodes.elementAt(0));
 				followNodes.removeElementAt(0);
 			}
-			// System.out.print("open list"+openList.size()+"close list" +
-			// closeList.size());
+
 
 		}
-		// this.printResult(pw); // record the searching result
-		// pw.close(); // close the output handle
-		// System.out.print("Record into " + filePath);
+
 		return isCompleted;
 	}
 
@@ -184,8 +141,7 @@ public class AStarSearch {
 				solutionPath.add(0, new Point(aNode.getPos().x*(16/aNode.accuracy),aNode.getPos().y*(16/aNode.accuracy)));
 				aNode = aNode.getParent();
 			}
-//			solutionPath.remove(0);
-//			reversedSolutionPath.remove(0);
+
 			solutionPath.add(0, new Point(aNode.getPos().x*(16/aNode.accuracy),aNode.getPos().y*(16/aNode.accuracy)));
 			smoothPath();
 			smoothPath2(6);
@@ -235,45 +191,6 @@ public class AStarSearch {
 			pw = new PrintWriter(new FileWriter("Result.txt"));
 			flag = true;
 		}
-		if (this.isCompleted == true) {
-			// to the file
-//			pw.println("Path Finding Completed");
-//			pw.println("Begin state:" + beginNode.toString());
-//			pw.println("End state:" + endNode.toString());
-//			pw.println("Solution Path: ");
-//			pw.println(getSolutionPathString());
-//			pw.println("Total number of searched nodes:" + searchedNodesNum);
-//			pw.println("Length of the solution path is:"
-//					+ currentNode.getNodeDepth());
-
-			// to the console
-//			 System.out.println("Path Finding Completed");
-//			 System.out.println("Begin state:" +
-//			 beginNode.tilePoint.toString());
-//			 System.out.println("End state:" + endNode.tilePoint.toString());
-//			 System.out.println("Solution Path: ");
-//			 System.out.println(getSolutionPathString());
-//			 System.out.println("Total number of searched nodes:" +
-//			 searchedNodesNum);
-//			 System.out.println("Length of the solution path is:" +
-//			 currentNode.getNodeDepth());
-
-		} else {
-			// into the file
-//			pw.println("No solution. Path Finding not Completed");
-//			pw.println("Begin state:" + beginNode.toString());
-//			pw.println("End state:" + endNode.toString());
-//			pw.println("Total number of searched nodes:" + searchedNodesNum);
-
-			// to the console
-//			 System.out.println("No solution. Path Finding not Completed");
-//			 System.out.println("Begin state:" +
-//			 beginNode.tilePoint.toString());
-//			 System.out.println("End state:" + endNode.tilePoint.toString());
-//			 System.out.println("Total number of searched nodes:"
-//			 + searchedNodesNum);
-		}
-		// close the file
 		if (flag)
 			pw.close();
 

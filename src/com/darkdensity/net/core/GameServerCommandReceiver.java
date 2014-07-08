@@ -7,7 +7,9 @@ import com.darkdensity.core.CommandPool;
 import com.darkdensity.core.GameWorld;
 import com.darkdensity.core.NetworkManager;
 import com.darkdensity.setting.Config;
-
+/** 
+* @author Team A1 - Hei Yin Wong
+*/
 public class GameServerCommandReceiver implements Runnable {
 
 	private Socket socket;

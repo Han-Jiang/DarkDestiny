@@ -14,7 +14,9 @@ import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.TargetDataLine;
 
 import com.darkdensity.setting.Config;
-
+/** 
+* @author Team A1 - Hei Yin Wong
+*/
 public abstract class VoiceChatManager {
 
 	private AudioFormat audioFormat;
@@ -22,10 +24,12 @@ public abstract class VoiceChatManager {
 	private ByteArrayOutputStream out;
 
 	public VoiceChatManager() {
+		//define the voice format
 		audioFormat = getFormat();
 		isCapture = true;
 	}
 
+	//define the voice format
 	private AudioFormat getFormat() {
 		float sampleRate = 8000;
 		int sampleSizeInBits = 8;
@@ -37,6 +41,7 @@ public abstract class VoiceChatManager {
 	}
 
 	public void captureAudio() {
+		//Capture audio and convert it into byte []
 		try {
 			DataLine.Info info = new DataLine.Info(TargetDataLine.class,
 					audioFormat);
@@ -78,10 +83,12 @@ public abstract class VoiceChatManager {
 	}
 
 	public void stopCapture() {
+		//stop the vocie capturing thread
 		this.isCapture = false;
 	}
 
 	public void playAudio(byte[] audio) {
+		//Used to play the received voice packet
 		try {
 			InputStream input = new ByteArrayInputStream(audio);
 			final AudioFormat format = getFormat();

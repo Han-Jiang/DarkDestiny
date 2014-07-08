@@ -14,46 +14,30 @@ import javax.swing.JPanel;
 import com.darkdensity.setting.Config;
 import com.darkdensity.setting.NLS;
 
-/*
- * ****************************************
- * Class: MainMenuPanel
- * ****************************************
- * Attributes:
- * public class GamePanel extends JLayeredPane:
- * private final int gameMode;
- * private ControlManager controlManager;
- * private MapPanel mapPanel;
- * private MiniMapPanel miniMapPanel;
- * private SpriteManager spriteManager;
- * private SpritePanel spritePanel;
- * private boolean isRunning = true;
- * private Map map;
- * private JFrame frame;
- * private Sprite sprite;
- * *****************************************
- * Methods:
- * public GamePanel(JFrame frame, int gameMode) throws IOException;
- * public void init() throws IOException;
- * public void gameLoop();
- * public boolean gameLoopCore() ;
- * public void update(long elapsedTime) throws Throwable;
- * public void cameraScolling();
- * private void redrawScreen(Graphics2D g);
- * public void exitGameWorld();
- * public JFrame getFrame();
- * public SpriteManager getSpriteManager();
- * boolean isInDrag(int sx, int sy, int ex, int ey, int x, int y, int width, int length);
+/**
+ * @ClassName: MainMenuPanel
+ * @Description: Display the main menu to user
+ * @author Team A1 - Hei Yin Wong
+ * @date 24 Mar 2014 23:01:48
+
  */
+
+
+
 public class MainMenuPanel extends AbstractPanel {
 	private MainMenuMenuItem menuItem;
 
 	public MainMenuPanel(JFrame frame) {
 		super(frame);
+		//add the menu panel
 		JPanel menuPanel = new MainMenuMenuItem();
 		menuPanel.setLocation(frame.getWidth() - menuPanel.getWidth(), 0);
 		add(menuPanel);
 	}
     
+	/**
+	 * paint the panel with background image
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -62,13 +46,4 @@ public class MainMenuPanel extends AbstractPanel {
 
 	}
 
-	@Override
-	public void update(long elapsedTime) {
-//		menuItem.update(elapsedTime);
-	}
-
-	@Override
-	public void reset() {
-		// item.elastic.slide(0, 100);
-	}
 }

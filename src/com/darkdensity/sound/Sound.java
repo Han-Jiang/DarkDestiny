@@ -45,6 +45,7 @@ public class Sound {
 		return samples;
 	}
 
+	// get the sound format
 	public AudioFormat getFormat() {
 		return format;
 	}

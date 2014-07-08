@@ -17,20 +17,12 @@ import com.darkdensity.core.NetworkManager;
 import com.darkdensity.setting.Config;
 import com.darkdensity.setting.NLS;
 
-/*
- * ****************************************
- * Class: VursusPanel
- * ****************************************
- * Attributes:
- * private JButton startBtn, backBtn;
- * ActionListener listenner;
- * *****************************************
- * Methods:
- * public VersusPanel(JFrame parent);
- * private void initButton(JButton button) ;
- * public void paintComponent(Graphics g);
- * public void update(long elapsedTime) ;
- * public void reset();
+/**
+ * 
+* @ClassName: VersusPanel
+* @Description: Versus Panel enable the user to start the game in "Versus" mode
+* @author Team A1
+* @date Mar 28, 2014 2:22:08 AM
  */
 public class VersusPanel extends AbstractPanel {
 	private JButton startBtn, backBtn, createServerBtn, connectBtn;
@@ -39,24 +31,27 @@ public class VersusPanel extends AbstractPanel {
 	private JTextField playername;
 	private JTextField iptxt;
 	
-	
-
+	/**
+	 * 
+	* <p>Title: </p>
+	* <p>Description: </p> construct a new versus panel
+	* @param parent
+	 */
 	public VersusPanel(JFrame parent) {
 		super(parent);
 		
 		this.parentFrame = parent;
 		setLayout(null);
 		
-		
+		//create a server
 		createServerBtn = getStyledButton(nls.createGamebtn);
 		createServerBtn.setLocation(getWidth() / 2 - createServerBtn.getWidth()
 				/ 2, getHeight() / 2);
 		createServerBtn.addActionListener(listenner);
 		this.add(createServerBtn);
 		
-		
-
-		
+	
+		//palyer name
 		JLabel playernamelbl = new JLabel(nls.playernamelbl);
 		playernamelbl.setSize(100, 20);
 		playernamelbl.setLocation(createServerBtn.getLocation().x, getHeight() / 2
@@ -69,6 +64,7 @@ public class VersusPanel extends AbstractPanel {
 		playername.setLocation(playernamelbl.getLocation().x + playernamelbl.getWidth(), getHeight()/2  - createServerBtn.getHeight() -10);
 		this.add(playername);
 
+		//option for ip
 		JLabel iplbl = new JLabel(nls.iplbl);
 		iplbl.setSize(20, 20);
 		iplbl.setLocation(createServerBtn.getLocation().x, getHeight() / 2
@@ -82,6 +78,8 @@ public class VersusPanel extends AbstractPanel {
 				iplbl.getLocation().y);
 		this.add(iptxt);
 
+		
+		//connect to the server
 		connectBtn = getStyledButton(nls.connectbtn);
 		connectBtn.setLocation(createServerBtn.getLocation().x,
 				iplbl.getLocation().y + iplbl.getHeight() + 20);
@@ -89,6 +87,14 @@ public class VersusPanel extends AbstractPanel {
 
 	}
 
+	/**
+	 * 
+	* @Title: initLabel 
+	* @Description: initial a label  
+	* @param @param jLabel
+	* @return void    
+	* @throws
+	 */
 	private void initLabel(JLabel jLabel) {
 		jLabel.setForeground(Color.WHITE);
 		jLabel.setIgnoreRepaint(true);
@@ -96,12 +102,23 @@ public class VersusPanel extends AbstractPanel {
 		this.add(jLabel);
 	}
 
+	/**
+	 * 
+	* @Title: initButton 
+	* @Description: initial a button
+	* @param @param button
+	* @return void    
+	* @throws
+	 */
 	private void initButton(JButton button) {
 		super.initButton(button, listenner);
 		this.add(button);
 
 	}
 
+	/**
+	 * paint the panel
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -120,6 +137,10 @@ public class VersusPanel extends AbstractPanel {
 
 	}
 
+	
+	/**
+	 * add listener to all the button and labels
+	 */
 	ActionListener listenner = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			JButton jb = (JButton) e.getSource();

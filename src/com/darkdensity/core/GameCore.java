@@ -20,8 +20,8 @@ import com.darkdensity.util.ImageLoader;
 
 /**
 * @ClassName: GameCore
-* @Description: the access of the game
-* @author Team A1
+* @Description: Entry point for the whole game
+* @author Team A1 - Hei Yin Wong
 */
 
 public class GameCore {
@@ -43,7 +43,6 @@ public class GameCore {
 		}
 		// Switch to full screen 
 		ScreenManager screen = new ScreenManager();
-		// DisplayMode displayMode = screen.getFisrtSupportedDisplayMode(DISPLAY_MODES);
 		DisplayMode displayMode = screen.getCurrentDisplayMode();
 		screen.setFullScreen(displayMode);
 		
@@ -58,15 +57,8 @@ public class GameCore {
 			frame.setLocationRelativeTo(null);// center
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.setUndecorated(true);
-
 		}
 		
-//		try {
-//			gameWorld = new GameWorld(frame, GameMode.SOLO);
-//		} catch (Throwable e) {
-//			if(Config.DEBUGMODE){e.printStackTrace();}
-//		}
-//		frame.setContentPane(gameWorld);
 		frame.setBackground(Color.white);
 		frame.setForeground(Color.white);
 		frame.setTitle(Config.PANEL_TITLE);

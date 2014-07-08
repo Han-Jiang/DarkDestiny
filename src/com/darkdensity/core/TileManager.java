@@ -22,6 +22,19 @@ import com.darkdensity.tile.Tile;
 import com.darkdensity.tile.Zombie;
 import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonValue;
+/**
+ * @ClassName: TileManager
+ * @Description: TODO(What the class do)
+ * @author Team A1 - Ting Yuen Lam, Hei Yin Wong and Ying Jing Feng 
+ * @date 24 Mar 2014 23:01:48
+ */
+
+/**
+ * @ClassName: GameWorld
+ * @Description: A class that implements all game logic and hold the game loop.
+ *               It will use different "Manager" to complete work
+ * @author Team A1
+ */
 
 /* ****************************************
  * Class: SpriteManager
@@ -53,6 +66,13 @@ public class TileManager extends Observable {
 	private CommandFactory commandFactory;
 	private TileManagerState state;
 
+	/**
+	 * 
+	* <p>Title: </p> Tile manager, manage all th tiles(sprites and buildings) in the maps
+	* <p>Description: </p>
+	* @param gameWorld
+	* @throws IOException
+	 */
 	public TileManager(GameWorld gameWorld) throws IOException {
 		this.gameWorld = gameWorld;
 		this.tilePanel = new TilePanel(this);
@@ -63,6 +83,14 @@ public class TileManager extends Observable {
 		this.state = TileManagerState.INIT_SPRITE_BUILDING;
 	}
 
+	/**
+	 * 
+	* @Title: init 
+	* @Description:intial the tile manager
+	* @param @throws IOException
+	* @return void    
+	* @throws
+	 */
 	public void init() throws IOException {
 		if (state == TileManagerState.INIT_SPRITE_BUILDING) {
 			initSprite();
@@ -73,6 +101,14 @@ public class TileManager extends Observable {
 		nextState();
 	}
 
+	/**
+	 * 
+	* @Title: initSprite 
+	* @Description: initial and create the sprite
+	* @param @throws IOException
+	* @return void    
+	* @throws
+	 */
 	private void initSprite() throws IOException {
 		System.out.println("=====init sprite=====");
 		createSprite("Survivor1", 218 * 16, 101 * 16);
@@ -86,6 +122,15 @@ public class TileManager extends Observable {
 
 	}
 
+	/**
+	 * 
+	* @Title: getNearestHuman 
+	* @Description: get the nearest human around a zombie
+	* @param @param zombie
+	* @param @return
+	* @return Sprite a human instance   
+	* @throws
+	 */
 	public Sprite getNearestHuman(Sprite zombie) {
 		Sprite nearestSuvivor = null;
 		double distance;
@@ -103,26 +148,77 @@ public class TileManager extends Observable {
 		return nearestSuvivor;
 	}
 
+	/**
+	 * 
+	* @Title: getSurvivorsNum 
+	* @Description:get the current survior number
+	* @param @return
+	* @return int    
+	* @throws
+	 */
 	public int getSurvivorsNum() {
 		return survivors.size();
 	}
 
+	/**
+	 * 
+	* @Title: getZombiesNum 
+	* @Description: get the zombie number
+	* @param @return
+	* @return int    
+	* @throws
+	 */
 	public int getZombiesNum() {
 		return zombies.size();
 	}
 
+	/**
+	 * 
+	* @Title: getSurvivor 
+	* @Description:get a survivor's ID 
+	* @param @param tileID
+	* @param @return
+	* @return Sprite    
+	* @throws
+	 */
 	public Sprite getSurvivor(int tileID) {
 		return survivors.get(tileID);
 	}
-
+	
+	/**
+	 * 
+	* @Title: getZombie 
+	* @Description: get a zombie's ID 
+	* @param @param tileID
+	* @param @return
+	* @return Sprite    
+	* @throws
+	 */
 	public Sprite getZombie(int tileID) {
 		return zombies.get(tileID);
 	}
 
+	/**
+	 * 
+	* @Title: getBarricad 
+	* @Description:get the barricade's ID
+	* @param @param tileID
+	* @param @return
+	* @return Barricade    
+	* @throws
+	 */
 	public Barricade getBarricad(int tileID) {
 		return barricades.get(tileID);
 	}
 
+	/**
+	 * 
+	* @Title: getAllTile 
+	* @Description: get all the tile in the map
+	* @param @return
+	* @return ArrayList<Tile>    
+	* @throws
+	 */
 	public ArrayList<Tile> getAllTile() {
 		ArrayList<Tile> tiles = new ArrayList<Tile>();
 		tiles.addAll(buildings.values());
@@ -133,46 +229,139 @@ public class TileManager extends Observable {
 
 	}
 
+	/**
+	 * 
+	* @Title: getTilePanel 
+	* @Description: get the tile panel
+	* @param @return
+	* @return TilePanel    
+	* @throws
+	 */
 	public TilePanel getTilePanel() {
 		return tilePanel;
 	}
 
+	/**
+	 * 
+	* @Title: getGameWorld 
+	* @Description: get the game world instance
+	* @param @return
+	* @return GameWorld    
+	* @throws
+	 */
 	public GameWorld getGameWorld() {
 		return gameWorld;
 	}
 
+	/**
+	 * 
+	* @Title: getZombies 
+	* @Description: get all the zombie sprite
+	* @param @return
+	* @return ArrayList<Zombie>    
+	* @throws
+	 */
 	public ArrayList<Zombie> getZombies() {
 		return new ArrayList<Zombie>(zombies.values());
 	}
 
+	/**
+	 * 
+	* @Title: getSurivors 
+	* @Description: get all the surivors's instance
+	* @param @return
+	* @return ArrayList<Survivor>    
+	* @throws
+	 */
 	public ArrayList<Survivor> getSurivors() {
 		return new ArrayList<Survivor>(survivors.values());
 	}
 
+	/**
+	 * 
+	* @Title: getBarricades 
+	* @Description:get all the barricade's instance
+	* @param @return
+	* @return ArrayList<Barricade>    
+	* @throws
+	 */
 	public ArrayList<Barricade> getBarricades() {
 		return new ArrayList<Barricade>(barricades.values());
 	}
 
+	/**
+	 * 
+	* @Title: getBuildings 
+	* @Description: get all the building instance
+	* @param @return
+	* @return ArrayList<Building>    
+	* @throws
+	 */
 	public ArrayList<Building> getBuildings() {
 		return new ArrayList<Building>(buildings.values());
 	}
 
+	/**
+	 * 
+	* @Title: getZombie 
+	* @Description: get a zombie by uuid
+	* @param @param uuid
+	* @param @return
+	* @return Zombie    
+	* @throws
+	 */
 	public Zombie getZombie(UUID uuid) {
 		return zombies.get(uuid);
 	}
 
+	/**
+	 * 
+	* @Title: getSurivor 
+	* @Description: get a surivor by uuid
+	* @param @param uuid
+	* @param @return
+	* @return Survivor    
+	* @throws
+	 */
 	public Survivor getSurivor(UUID uuid) {
 		return survivors.get(uuid);
 	}
 
+	/**
+	 * 
+	* @Title: getBarricade 
+	* @Description: get a barricade by uuid
+	* @param @param uuid
+	* @param @return
+	* @return Barricade    
+	* @throws
+	 */
 	public Barricade getBarricade(UUID uuid) {
 		return barricades.get(uuid);
 	}
 
+	/**
+	 * 
+	* @Title: getBuilding 
+	* @Description: get building by uuid
+	* @param @param uuid
+	* @param @return
+	* @return Building    
+	* @throws
+	 */
 	public Building getBuilding(UUID uuid) {
 		return buildings.get(uuid);
 	}
 
+	/**
+	 * 
+	* @Title: getTile 
+	* @Description: get a tile by uuid
+	* @param @param uuid
+	* @param @return
+	* @return Tile    
+	* @throws
+	 */
 	public Tile getTile(UUID uuid) {
 		if (survivors.containsKey(uuid)) {
 			return survivors.get(uuid);
@@ -187,15 +376,39 @@ public class TileManager extends Observable {
 		}
 	}
 
+	/**
+	 * 
+	* @Title: getFocusManager 
+	* @Description: get the focus manager
+	* @param @return
+	* @return FocusManager    
+	* @throws
+	 */
 	public FocusManager getFocusManager() {
 		return focusManager;
 	}
 
+	/**
+	 * 
+	* @Title: setFocusManager 
+	* @Description: set the focus manager
+	* @param @param focusManager
+	* @return void    
+	* @throws
+	 */
 	public void setFocusManager(FocusManager focusManager) {
 		this.focusManager = focusManager;
 		tilePanel.setFocusManager(focusManager);
 	}
 
+	/**
+	 * 
+	* @Title: addTile 
+	* @Description: add a tile to corresponding tile list
+	* @param @param t
+	* @return void    
+	* @throws
+	 */
 	public void addTile(Tile t) {
 		if (t instanceof Survivor) {
 			survivors.put(t.getUUID(), (Survivor) t);
@@ -214,6 +427,14 @@ public class TileManager extends Observable {
 		tilePanel.initTile(t);
 	}
 
+	/**
+	 * 
+	* @Title: removeTile 
+	* @Description: remove tile from the game by using an extra thread 
+	* @param @param t
+	* @return void    
+	* @throws
+	 */
 	public void removeTile(final Tile t) {
 		Runnable runnable = new Runnable() {
 			@Override
@@ -246,6 +467,16 @@ public class TileManager extends Observable {
 		thread.start();
 	}
 
+	/**
+	 * 
+	* @Title: getNearestSurroundingHuman 
+	* @Description: get the nearest human in a number of surrounding human around an zombie.
+	* @param @param zombie
+	* @param @param surroundingSprite
+	* @param @return
+	* @return Sprite    
+	* @throws
+	 */
 	public static Sprite getNearestSurroundingHuman(Sprite zombie,
 			ArrayList<Tile> surroundingSprite) {
 		if (surroundingSprite.size() == 0)
@@ -270,10 +501,26 @@ public class TileManager extends Observable {
 		return nearestSprite;
 	}
 
+	/**
+	 * 
+	* @Title: setCommandFactory 
+	* @Description: set the command factory
+	* @param @param commandFactory
+	* @return void    
+	* @throws
+	 */
 	public void setCommandFactory(CommandFactory commandFactory) {
 		this.commandFactory = commandFactory;
 	}
 
+	/**
+	 * 
+	* @Title: isLose 
+	* @Description:see whether the player has lose the game 
+	* @param @return
+	* @return boolean    
+	* @throws
+	 */
 	public boolean isLose() {
 		try {
 			boolean isLose = true;
@@ -292,6 +539,15 @@ public class TileManager extends Observable {
 		return false;
 	}
 
+	/**
+	 * 
+	* @Title: initBuilding 
+	* @Description: load all the buildings from a json file 
+	* @param @throws FileNotFoundException
+	* @param @throws IOException
+	* @return void    
+	* @throws
+	 */
 	private void initBuilding() throws FileNotFoundException, IOException {
 		System.out.println("=====init building=====");
 		JsonArray buildings = JsonArray.readFrom(new FileReader(
@@ -307,6 +563,14 @@ public class TileManager extends Observable {
 		}
 	}
 
+	/**
+	 * 
+	* @Title: initBuildingResource 
+	* @Description: generate resource in the building when the building was first loaded
+	* @param 
+	* @return void    
+	* @throws
+	 */
 	private void initBuildingResource() {
 		System.out.println("=====init resource=====");
 		for (Building building : buildings.values()) {
@@ -314,6 +578,14 @@ public class TileManager extends Observable {
 		}
 	}
 
+	/**
+	 * 
+	* @Title: generateBuildingResource 
+	* @Description: re generate the building resource
+	* @param @param uuid
+	* @return void    
+	* @throws
+	 */
 	public void generateBuildingResource(UUID uuid) {
 		System.out.println("=====gen resource=====");
 		commandFactory.setFocusID(uuid);
@@ -325,6 +597,16 @@ public class TileManager extends Observable {
 		commandFactory.createCommand("GenernateResourceCommand");
 	}
 
+	/**
+	 * 
+	* @Title: createSprite 
+	* @Description: create a sprite at a positin
+	* @param @param sprite
+	* @param @param x
+	* @param @param y
+	* @return void    
+	* @throws
+	 */
 	public void createSprite(String sprite, int x, int y) {
 		commandFactory.setPointX(x);
 		commandFactory.setPointY(y);
@@ -333,12 +615,34 @@ public class TileManager extends Observable {
 		commandFactory.createCommand("CreateCommand");
 	}
 
+	/**
+	 * 
+	* @Title: updateTileProgress 
+	* @Description: update tile progress 
+	* @param @param uuid
+	* @param @param n
+	* @return void    
+	* @throws
+	 */
 	public void updateTileProgress(UUID uuid, int n) {
 		commandFactory.setFocusID(uuid);
 		commandFactory.setProgressUpdate(n);
 		commandFactory.createCommand("UpdateProgressCommand");
 	}
 
+	/**
+	 * 
+	* @Title: ScavengeSupplies 
+	* @Description: scanvenge food and other resource in a building by uuid 
+	* @param @param uuid
+	* @param @param food
+	* @param @param wood
+	* @param @param iron
+	* @param @param survivor
+	* @param @param playerRole
+	* @return void    
+	* @throws
+	 */
 	public void ScavengeSupplies(UUID uuid, int food, int wood, int iron,
 			int survivor, PlayerRole playerRole) {
 		commandFactory.setPlayerRole(playerRole);
@@ -347,25 +651,65 @@ public class TileManager extends Observable {
 		commandFactory.createCommand("ScavengeCommand");
 	}
 
+	/**
+	 * 
+	* @Title: DestroyTile 
+	* @Description: destroy a tile by uuid
+	* @param @param uuid
+	* @return void    
+	* @throws
+	 */
 	public void DestroyTile(UUID uuid) {
 		commandFactory.setFocusID(uuid);
 		commandFactory.createCommand("DestroyTileCommand");
 	}
 
+	/**
+	 * 
+	* @Title: generateZombie 
+	* @Description: generate zombies
+	* @param 
+	* @return void    
+	* @throws
+	 */
 	public void generateZombie() {
 		Point tmpPoint = GridMapManager.gridMap.getZombieBasePoint();
 		System.out.println("Zombie base pt: "+ tmpPoint.x + " Y: " + tmpPoint.y );
 		createSprite("Zombie1", tmpPoint.x * 16, tmpPoint.y * 16);	
 	}
-
+	
+	/**
+	 * 
+	* @Title: getState 
+	* @Description: get the state of the tile management
+	* @param @return
+	* @return TileManagerState    
+	* @throws
+	 */
 	public TileManagerState getState() {
 		return state;
 	}
 
+	/**
+	 * 
+	* @Title: setState 
+	* @Description:set state of tile manager
+	* @param @param state
+	* @return void    
+	* @throws
+	 */
 	public void setState(TileManagerState state) {
 		this.state = state;
 	}
 	
+	/**
+	 * 
+	* @Title: nextState 
+	* @Description: change the state into next stage
+	* @param 
+	* @return void    
+	* @throws
+	 */
 	private void nextState(){
 		state = TileManagerState.values()[state.ordinal() + 1];
 	}

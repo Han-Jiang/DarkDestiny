@@ -8,7 +8,9 @@ import com.darkdensity.gui.MultiPlayerSettingPanel;
 import com.darkdensity.net.core.GameServer;
 import com.darkdensity.net.core.NetUtil;
 import com.darkdensity.setting.Config;
-
+/** 
+* @author Team A1 - Hei Yin Wong
+*/
 public class GameLobbyRequestReceiver implements Runnable {
 
 	private NetworkManager networkManager;

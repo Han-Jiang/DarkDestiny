@@ -3,10 +3,11 @@ package com.darkdensity.main;
 import com.darkdensity.core.GameCore;
 
 /**
+ * 
 * @ClassName: Main
-* @Description: The entrance of the game
+* @Description: Game entrance, enter the game.
 * @author Team A1
-* @date 2014年7月6日 下午3:38:52s
+* @date Mar 28, 2014 3:18:13 AM
  */
 public class Main {
 	public static void main(String arg[]) {

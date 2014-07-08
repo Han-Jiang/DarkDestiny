@@ -24,7 +24,7 @@ import com.darkdensity.util.ImageLoader;
 
 /**
  * 
- * @ClassName: SettingPanel
+ * @ClassName: optionPanel
  * @Description: Setting panel for the game
  * @author Team A1
  * @date 19 Mar 2014 15:39:29
@@ -45,6 +45,12 @@ public class OptionPanel extends JPanel implements ItemListener {
 	private JRadioButtonMenuItem language_spain;
 	private NLS nls;
 
+	/**
+	 * 
+	* <p>Title: </p> Option Panel
+	* <p>Description: </p> Option panel provides option setting for the game
+	* @param frame
+	 */
 	public OptionPanel(JFrame frame) {
 
 		this.frame = frame;
@@ -54,6 +60,7 @@ public class OptionPanel extends JPanel implements ItemListener {
 		this.setBackground(new Color(0, 0, 0, 70));
 		this.setOpaque(false);
 
+		// add multi-language setting
 		languagelbl = AbstractPanel.getStyledLable(nls.languagelbl);
 		languagelbl.setLocation(getWidth() / 2 - 100, getHeight() / 2);
 		this.add(languagelbl);
@@ -76,6 +83,7 @@ public class OptionPanel extends JPanel implements ItemListener {
 		language_french.addActionListener(listenner);
 		language_spain.addActionListener(listenner);
 
+		// set the position of all the button
 		// AbstractPanel.setUnder(language_lable, userNameTextFiled, 20);
 		AbstractPanel.setUnder(language_english, languagelbl, 5);
 		language_english.setLocation(
@@ -85,6 +93,8 @@ public class OptionPanel extends JPanel implements ItemListener {
 		AbstractPanel.setUnder(language_french, language_english, 5);
 		AbstractPanel.setLeft(language_spain, language_french, 10);
 
+		
+		// add option setting for color blind
 		colorBlind = AbstractPanel.getStyledCheckBox(nls.colorBlind,
 				Config.IS_COLOR_BLIND_MODE);
 
@@ -105,6 +115,9 @@ public class OptionPanel extends JPanel implements ItemListener {
 
 	}
 
+	/**
+	 * paint the panel with a shadow background
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -118,6 +131,9 @@ public class OptionPanel extends JPanel implements ItemListener {
 				saveButton.getWidth() + 40 - 2, 400 - 2, 10, 10);
 	}
 
+	/**
+	 * add action listener for multi-language 
+	 */
 	ActionListener listenner = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 
@@ -135,6 +151,7 @@ public class OptionPanel extends JPanel implements ItemListener {
 		}
 	};
 
+	//add listener for color blind mode setting
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 

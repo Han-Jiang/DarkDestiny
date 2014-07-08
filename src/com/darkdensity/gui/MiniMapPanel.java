@@ -23,22 +23,18 @@ import com.darkdensity.tile.Tile;
 import com.darkdensity.tile.Zombie;
 import com.darkdensity.util.ImageLoader;
 
-/*
- * ****************************************
- * Class: MiniMapPanel
- * ****************************************
- * Attributes:
- BufferedImage buffer = null;
- private int width = 192;
- private int height = 243;
- private int x = 0;
- private int y = 0;
- * *****************************************
- * Methods:
- * public MiniMapPanel(JFrame frame);
- * public void setRectangleXY(int x, int y) ;
- * public void redraw(Graphics g) ;
- * public void paintComponent(Graphics g);
+
+/**
+ * 
+* @ClassName: MiniMapPanel
+* @Description: the mini map, show the tiles' position on the minimap and control map scrolling
+* @author Team A1
+* @date Mar 28, 2014 12:09:21 AM
+=======
+ * @ClassName: GameWorld
+ * @Description: TODO(What the class do)
+ * @author Team A1 - Han Jiang
+ * @date 24 Mar 2014 23:01:48
  */
 public class MiniMapPanel extends AbstractPanel {
 	private int width = 263;
@@ -58,6 +54,13 @@ public class MiniMapPanel extends AbstractPanel {
 	private TileManager tileManager;
 	private MouseListener listener = new MouseListener();
 
+	/**
+	 * 
+	* <p>Title: </p>
+	* <p>Description: </p> construct a minimap with JFrame and tile manager
+	* @param frame
+	* @param tileManager
+	 */
 	public MiniMapPanel(JFrame frame, TileManager tileManager) {
 		super(frame);
 		setSize(width, height);// set the size
@@ -75,6 +78,9 @@ public class MiniMapPanel extends AbstractPanel {
 		this.addMouseMotionListener(listener);
 	}
 
+	/**
+	 * paint the paint component
+	 */
 	public void paintComponent(Graphics g) {
 		
 		rectX = GameWorld.iRenderX / scale + borderSizeLeft;
@@ -84,7 +90,7 @@ public class MiniMapPanel extends AbstractPanel {
 		// load the mini map image
 		Image miniMap = ImageLoader.loadImage(Config.MINIMAP);
 
-		// draw the minimap and border
+		// draw the mini map and border
 		g2d.drawImage(miniMap, borderSizeLeft, borderSizeTop, this);
 
 		// draw all the sprite on the minimap
@@ -103,12 +109,6 @@ public class MiniMapPanel extends AbstractPanel {
 				}
 			}
 
-			// if(tile.getClass() == Survivor2.class){
-			// g2d.setColor(Color.blue);
-			// }
-			// if(tile.getClass() == Zombie.class){
-			// g2d.setColor(Color.red);
-			// }
 			int tileX = (tile.getX() + tile.getTileWidth() / 2) / scale + borderSizeLeft;
 			int tileY = (tile.getY() + tile.getTileHeight() / 2) / scale + borderSizeTop;
 			g2d.drawRect(tileX, tileY, 5, 5);
@@ -119,6 +119,13 @@ public class MiniMapPanel extends AbstractPanel {
 		g2d.drawImage(border, 0, 0, this);
 	}
 
+	/**
+	 * 
+	* @ClassName: MouseListener
+	* @Description: use to control the map scrolling
+	* @author Team A1
+	* @date Mar 28, 2014 1:10:36 AM
+	 */
 	private class MouseListener extends MouseAdapter {
 
 		@Override

@@ -44,6 +44,15 @@ public class Building extends Tile {
 		return buildingName;
 	}
 
+	/**
+	 * 
+	* @Title: initBuildingImage 
+	* @Description: initial the building image 
+	* @param @param buildingName
+	* @param @throws IOException
+	* @return void    
+	* @throws
+	 */
 	public void initBuildingImage(String buildingName) throws IOException {
 		this.buildingName = buildingName;
 		this.bufferedImages = Constant.getFrames(Config.BUILDING_PATH
@@ -55,6 +64,14 @@ public class Building extends Tile {
 		this.setSize(tileWidth, tileHeight);
 	}
 
+	/**
+	 * 
+	* @Title: setBuildingName 
+	* @Description: TODO(What the method do) 
+	* @param @param buildingName
+	* @return void    
+	* @throws
+	 */
 	public void setBuildingName(String buildingName) {
 		this.buildingName = buildingName;
 	}
@@ -64,14 +81,6 @@ public class Building extends Tile {
 		return bufferedImages[((focusing || entered) ? imageOffset : 0)];
 	}
 
-	public void drawHintsPanel(Graphics2D g2d) {
-//		if(this.isShowHintsPanel){		
-//			Graphics g = hintsPanelBI.getGraphics();
-//			g.setColor(Color.WHITE);
-//			g.drawString("hello world", 0, 10);
-//			g2d.drawImage(hintsPanelBI, hintsPanel.getLocation().x,hintsPanel.getLocation().y,this);
-//		}
-	}
 
 	public Resource getResource() {
 		return resource;

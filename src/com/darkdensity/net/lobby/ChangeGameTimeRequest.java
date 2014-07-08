@@ -1,7 +1,9 @@
 package com.darkdensity.net.lobby;
 
 import com.darkdensity.setting.Config;
-
+/** 
+* @author Team A1 - Hei Yin Wong
+*/
 public class ChangeGameTimeRequest extends GameRequest {
 
 	int gameTime;

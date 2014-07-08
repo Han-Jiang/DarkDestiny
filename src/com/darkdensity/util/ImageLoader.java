@@ -26,8 +26,7 @@ public class ImageLoader {
 	// cache for the images
 	private static Map<String, Image> IMAGE_CACHE = new HashMap<String, Image>();
 	
-	// cache for the buffered images
-//	private static Map<String,BufferedImage> BUFFERED_IMAGE_CACHE = new HashMap<String,BufferedImage>();
+	
 	/**
 	 * 
 	* @Title: loadImage 

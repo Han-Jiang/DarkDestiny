@@ -15,6 +15,13 @@ import com.darkdensity.setting.Constant;
 import com.darkdensity.setting.Constant.BarricadeDirection;
 import com.darkdensity.setting.Constant.PlayerRole;
 
+/**
+ * 
+* @ClassName: CommandFactory
+* @Description: command factory manage all the command
+* @author Team A1 - Ting Yuen Lam
+* @date Mar 27, 2014 11:15:32 PM
+ */
 public class CommandFactory {
 	protected GameWorld gameWorld;
 	protected TileManager tileManager;

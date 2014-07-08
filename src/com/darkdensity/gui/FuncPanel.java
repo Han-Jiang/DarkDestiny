@@ -28,9 +28,9 @@ import com.darkdensity.util.ImageLoader;
  * 
 * @ClassName: FuncPanel
 * @Description: Function panel, provide the function set which the player can choose 
-* @author Team A1
-* @date 19 Mar 2014 15:03:52
- */
+
+* @author Team A1 - Ting Yuen Lam
+*/
 public class FuncPanel extends AbstractPanel implements MouseMotionListener{	
 	private JButton buildBtn, bBtn, cBtn, smallBarricadeBtn, largeBarricadeBtn;
 	
@@ -39,6 +39,13 @@ public class FuncPanel extends AbstractPanel implements MouseMotionListener{
 	private JPanel objectPanel;
 	private Image buildIcon, funcPanel, moreIcon, smallBarricadeIcon, largeBarricadeIcon;
 	
+	/**
+	 * 
+	* <p>Title: </p>
+	* <p>Description: </p> i construct a new function panel with JFrame
+	* @param frame
+	* @throws IOException
+	 */
 	public FuncPanel(final JFrame frame) throws IOException {
 		//initial thee panle
 		super(frame);
@@ -52,12 +59,14 @@ public class FuncPanel extends AbstractPanel implements MouseMotionListener{
 		setLayout(null);
 		setOpaque(true);
 		
+		// add button
 		buildBtn = new JButton();		
 		bBtn = new JButton();
 		cBtn = new JButton();
 		smallBarricadeBtn = new JButton();
 		largeBarricadeBtn = new JButton();
 		
+		//object panel use for cpalce barricade of different size 
 		objectPanel = new JPanel();
 		objectPanel.setSize(100, 200);
 		objectPanel.setLocation(funcPanel.getWidth(null), 0);
@@ -65,6 +74,7 @@ public class FuncPanel extends AbstractPanel implements MouseMotionListener{
 		objectPanel.setOpaque(true);
 		objectPanel.setBackground(new Color(255, 255, 255, 0));
 		
+		//initial small barricade
 		SmallBarricade tmpSmallBarricade = new SmallBarricade();
 		Resource tmpResource = tmpSmallBarricade.getConsumeResource();
 		smallBarricadeBtn.setIcon(new ImageIcon(smallBarricadeIcon));
@@ -73,6 +83,7 @@ public class FuncPanel extends AbstractPanel implements MouseMotionListener{
 		smallBarricadeBtn.setVisible(true);
 		smallBarricadeBtn.setToolTipText("Build Small Barricade: wood: " + tmpResource.getWood() + ", iron: " + tmpResource.getIron());
 		
+		//initial large barricade
 		LargeBarricade tmpLargeBarricade = new LargeBarricade();
 		tmpResource = tmpLargeBarricade.getConsumeResource();
 		largeBarricadeBtn.setIcon(new ImageIcon(largeBarricadeIcon));
@@ -80,7 +91,8 @@ public class FuncPanel extends AbstractPanel implements MouseMotionListener{
 		largeBarricadeBtn.setSize(82, 82);
 		largeBarricadeBtn.setVisible(true);
 		largeBarricadeBtn.setToolTipText("Build Large Barricade: wood: " + tmpResource.getWood() + ", iron: " + tmpResource.getIron());
-		
+	
+		//add to the panle
 		objectPanel.add(smallBarricadeBtn);
 		objectPanel.add(largeBarricadeBtn);
 		
@@ -119,6 +131,7 @@ public class FuncPanel extends AbstractPanel implements MouseMotionListener{
 		
 		this.addMouseMotionListener(this);
 		
+		//add action listener to the items
 		buildBtn.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -160,11 +173,22 @@ public class FuncPanel extends AbstractPanel implements MouseMotionListener{
 		this.gameWorld = gameWorld;
 	}
 
+	/**
+	 * 
+	* @Title: setFocusManager 
+	* @Description: set the focus manager
+	* @param @param focusManager
+	* @return void    
+	* @throws
+	 */
 	public void setFocusManager(FocusManager focusManager) {
 		this.focusManager = focusManager;
 	}
 
 
+	/**
+	 * paint out the function panel
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;

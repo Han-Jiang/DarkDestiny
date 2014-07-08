@@ -5,6 +5,12 @@ import java.awt.Point;
 import com.darkdensity.maprender.GridMap;
 import com.darkdensity.setting.Constant.Direction;
 
+/**
+* @ClassName: AStarNode
+* @Description: AStar Node for AStar Search
+* @author Team A1 - Yingjing
+*/
+
 public class AStarNode {
 	AStarNode parent;
     int nodeDepth;
@@ -25,6 +31,14 @@ public class AStarNode {
 		
 	}
     
+	/** 
+	* @Title: setMap 
+	* @Description: set a hashmap for the class to refer which are walkable grids
+	* @param @param hashMap
+	* @return void    
+	* @throws 
+	*/ 
+	
 	public void setMap(GridMap hashMap){
 		this.map =hashMap;
 	}
@@ -60,6 +74,15 @@ public class AStarNode {
 	public int getNodeDepth(){
 		return nodeDepth;
 	}
+	
+	/** 
+	* @Title: move 
+	* @Description: move the node to different direction
+	* @param @param direction
+	* @param @return
+	* @return boolean    
+	* @throws 
+	*/ 
 	
 	public boolean move(int direction) {
 		this.parent = new AStarNode(this);

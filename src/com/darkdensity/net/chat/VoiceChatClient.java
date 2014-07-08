@@ -6,13 +6,16 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 
 import com.darkdensity.setting.Config;
-
+/** 
+* @author Team A1 - Hei Yin Wong
+*/
 public class VoiceChatClient extends VoiceChatManager {
 
 	private Socket socket;
 	private VoiceMessageReceiver receiver;
 
 	public VoiceChatClient(String ipAddress) {
+		//Create a socket to handling voice chat
 		super();
 		try {
 			System.out.println("Voice Chat Client init");
@@ -31,6 +34,7 @@ public class VoiceChatClient extends VoiceChatManager {
 
 	@Override
 	public void sendVoiceMessage() {
+		//Send out a voice packet 
 		System.out.println("Send message in voice Chat client");
 		try {
 			// VoicePacket vp = new VoicePacket(this.getCapturedAudio());
@@ -39,6 +43,7 @@ public class VoiceChatClient extends VoiceChatManager {
 					socket.getOutputStream());
 			byte[] message = this.getCapturedAudio();
 			int messageLength = message.length;
+			//debug message
 			System.out.println("*****Voice Packet ******");
 			System.out.println("Length: " + messageLength);
 			//
@@ -56,6 +61,7 @@ public class VoiceChatClient extends VoiceChatManager {
 	}
 
 	public void stopReceiveMessage() {
+	
 		receiver.stopReceiveMessage();
 	}
 }

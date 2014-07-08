@@ -20,6 +20,13 @@ import com.darkdensity.setting.Constant;
 import com.darkdensity.util.ImageLoader;
 import com.darkdensity.util.Pair;
 
+
+/**
+ * @ClassName: MapForeGroundPanel
+ * @Description: Shows the map foreground to player
+ * @author Team A1 - Han Jiang
+ * @date 24 Mar 2014 23:01:48
+ */
 public class MapForegroundPanel extends JPanel {
 	private JFrame frame;
 	private Image mapForeground;

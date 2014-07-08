@@ -6,6 +6,12 @@ import com.darkdensity.core.GridMapManager;
 import com.darkdensity.maprender.GridMap;
 import com.darkdensity.setting.Constant.Direction;
 
+/**
+* @ClassName: SimpleAStarNode
+* @Description: Simple Astar Node for Simple Astar Search
+* @author Team A1 - Yingjing Feng
+*/
+
 public class SimpleAStarNode {
 	SimpleAStarNode parent;
     int nodeDepth;

@@ -45,8 +45,9 @@ import com.darkdensity.util.ImageLoader;
 /**
  * 
 * @ClassName: AbstractPanel
-* @Description: TODO(What the class do)
-* @author Team A1
+* @Description: AbstractPanel panel provide the common attribute for all the panel
+*  and provide method return styled button, label and other ui 
+* @author Team A1 - Tin Yuen Lam
 * @date 19 Mar 2014 13:52:00
  */
 public abstract class AbstractPanel extends JPanel {
@@ -94,18 +95,43 @@ public abstract class AbstractPanel extends JPanel {
 		button.addActionListener(listenner);
 	}
 
-	
+	@Override
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 	}
-
+	
+	/**
+	 * 
+	* @Title: update 
+	* @Description:update the panel's data by elapased time
+	* @param @param elapsedTime
+	* @return void    
+	* @throws
+	 */
 	public void update(long elapsedTime) {
 	};
 
+	/**
+	 * 
+	* @Title: reset 
+	* @Description: reset the panel's some component to initial status
+	* @param 
+	* @return void    
+	* @throws
+	 */
 	public void reset() {
 	};
 
 	
+	/**
+	 * 
+	* @Title: getStyledButton 
+	* @Description: return a styled button with image background
+	* @param @param text
+	* @param @return
+	* @return JButton    
+	* @throws
+	 */
 	public static JButton getStyledButton(String text){
 
 		ImageIcon imageIcon = ImageLoader.getImageIcon(Config.IMAGE_BUTTON_PATH);
@@ -126,6 +152,16 @@ public abstract class AbstractPanel extends JPanel {
 		return button;
 	}
 	
+	/**
+	 * 
+	* @Title: getStyledFunctionButton 
+	* @Description: return a styled button with big iamge backgound,
+	* mainly used for the main menu of the game
+	* @param @param text
+	* @param @return
+	* @return JButton    
+	* @throws
+	 */
 	public static JButton getStyledFunctionButton(String text){
 
 		ImageIcon imageIcon = ImageLoader.getImageIcon(Config.GAME_UI_FUNCTION_BUTTON_DARK);
@@ -147,6 +183,15 @@ public abstract class AbstractPanel extends JPanel {
 	}
 	
 	
+	/**
+	 * 
+	* @Title: getStyledLable 
+	* @Description: get a style label with iamge background
+	* @param @param text
+	* @param @return
+	* @return JLabel    
+	* @throws
+	 */
 	public static JLabel getStyledLable(String text){
 		
 		ImageIcon imageIcon = ImageLoader.getImageIcon(Config.GAME_UI_LABLE);
@@ -167,6 +212,15 @@ public abstract class AbstractPanel extends JPanel {
 	}
 	
 	
+	/**
+	 * 
+	* @Title: getStyledRadioButton 
+	* @Description: get a styled radio button with image bcakground
+	* @param @param text
+	* @param @return
+	* @return JRadioButtonMenuItem    
+	* @throws
+	 */
 	public static JRadioButtonMenuItem getStyledRadioButton(String text){
 
 		ImageIcon imageIcon = ImageLoader.getImageIcon(Config.IMAGE_BUTTON_PATH);
@@ -188,7 +242,16 @@ public abstract class AbstractPanel extends JPanel {
 		return button;
 	}
 	
-	
+	/**
+	 * 
+	* @Title: getStyledCheckBox 
+	* @Description: get a styled check box with image background
+	* @param @param text
+	* @param @param isSelected
+	* @param @return
+	* @return JCheckBox    
+	* @throws
+	 */
 	public static JCheckBox getStyledCheckBox(String text,boolean isSelected){
 		
 		ImageIcon imageIcon; 
@@ -216,21 +279,76 @@ public abstract class AbstractPanel extends JPanel {
 		
 	}
 	
+	/**
+	 * 
+	* @Title: setBottomRight 
+	* @Description:  set the first component's position to the right bottom of
+	* of the second component
+	* @param @param a
+	* @param @param b
+	* @param @param border
+	* @return void    
+	* @throws
+	 */
 	public static void setBottomRight(JComponent a, JComponent b,int border){
 		a.setLocation(b.getWidth()-a.getWidth()-border,b.getHeight()-a.getHeight()-border);
 	}
+	/**
+	 * 
+	* @Title: setTopRight 
+	* @Description:  set the first component's position to the top right of
+	* of the second component
+	* @param @param a
+	* @param @param b
+	* @param @param border
+	* @return void    
+	* @throws
+	 */
 	public static void setTopRight(JComponent a, JComponent b,int border){
 		a.setLocation(b.getWidth()-a.getWidth()-border,border);
 	}
 	
+	/**
+	 * 
+	* @Title: setUnder 
+	* @Description:  set the first component's position to the bottom
+	*  of the second component
+	* @param @param a
+	* @param @param b
+	* @param @param border
+	* @return void    
+	* @throws
+	 */
 	public static void setUnder(JComponent a, JComponent b,int border){
 		a.setLocation(b.getLocation().x,b.getLocation().y+b.getHeight()+border);
 	}
 	
+	/**
+	 * 
+	* @Title: setOnTop 
+	* @Description:  set the first component's position to the top
+	* of the second component
+	* @param @param a
+	* @param @param b
+	* @param @param border
+	* @return void    
+	* @throws
+	 */
 	public static void setOnTop(JComponent a, JComponent b,int border){
 		a.setLocation(b.getLocation().x,b.getLocation().y-a.getHeight()-border);
 	}
 	
+	/**
+	 * 
+	* @Title: setLeft 
+	* @Description:  set the first component's position to the left
+	* of the second component
+	* @param @param a
+	* @param @param b
+	* @param @param border
+	* @return void    
+	* @throws
+	 */
 	public static void setLeft(JComponent a, JComponent b,int border){
 		a.setLocation(b.getLocation().x+b.getWidth()+border,b.getLocation().y);
 	}

@@ -4,13 +4,13 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
 /**
-    The LoopingByteInputStream is a ByteArrayInputStream that
-    loops indefinitly. The looping stops when the close() method
-    is called.
-    <p>Possible ideas to extend this class:<ul>
-    <li>Add an option to only loop a certain number of times.
-    </ul>
-*/
+ * 
+* @ClassName: LoopByteArrayInputStream
+* @Description: The LoopingByteInputStream is a ByteArrayInputStream that
+     can loop
+* @author Team A1 - Han
+* @date Mar 28, 2014 6:37:04 AM
+ */
 public class LoopByteArrayInputStream extends ByteArrayInputStream {
 
     private boolean closed;
@@ -21,8 +21,8 @@ public class LoopByteArrayInputStream extends ByteArrayInputStream {
     
 
     /**
-       @Description:  Creates a LoopByteInputStream with a byte array. 
-    */
+      * @Description:  Creates a LoopByteInputStream with a byte array. 
+      */
     public LoopByteArrayInputStream(byte[] buffer) {
         super(buffer);
         closed = false;
@@ -30,8 +30,8 @@ public class LoopByteArrayInputStream extends ByteArrayInputStream {
     }
     
     /**
-    	@Description:  Creates a LoopByteInputStream with a byte array 
-    	and limited repeat time. 
+    *@Description:  Creates a LoopByteInputStream with a byte array 
+    *	and limited repeat time. 
 	 */
 	 public LoopByteArrayInputStream(byte[] buffer,int times) {
 	     super(buffer);
@@ -74,8 +74,8 @@ public class LoopByteArrayInputStream extends ByteArrayInputStream {
 
 
     /**
-        @Description: Closes the stream
-    */
+     * @Description: Closes the stream
+     */
     public void close() throws IOException {
         super.close();
         closed = true;

@@ -53,6 +53,11 @@ public class SettingPanel extends JPanel implements DocumentListener,
 	private NLS nls;
 	private NetworkManager networkManager;
 
+	/**
+	 * 
+	* <p>Title: </p>Setting panel
+	* <p>Description: </p> Setting panel provide setting for survive time and other options
+	 */
 	public SettingPanel() {
 		this.nls = NLS.getInstance();
 		// for single player
@@ -60,6 +65,7 @@ public class SettingPanel extends JPanel implements DocumentListener,
 		this.setSize(270, 600);
 		this.setOpaque(false);
 
+		//setting for the survive time
 		gameTimelbl = AbstractPanel.getStyledLable(nls.winningTime_lbl);
 		gameTimelbl.setLocation(10, 0);
 		this.add(gameTimelbl);
@@ -75,6 +81,8 @@ public class SettingPanel extends JPanel implements DocumentListener,
 		AbstractPanel.setUnder(gameTimetxt, gameTimelbl, 5);
 		this.add(gameTimetxt);
 
+		
+		//setting for te full reveal
 		dark_lable = AbstractPanel.getStyledLable(nls.reveallbl);
 		this.add(dark_lable);
 
@@ -86,6 +94,7 @@ public class SettingPanel extends JPanel implements DocumentListener,
 		AbstractPanel.setUnder(dark_box, dark_lable, 5);
 		dark_box.addItemListener(this);
 
+		//setting for cheat
 		cheat_lable = AbstractPanel.getStyledLable(nls.chatlbl);
 		this.add(cheat_lable);
 
@@ -97,6 +106,7 @@ public class SettingPanel extends JPanel implements DocumentListener,
 		AbstractPanel.setUnder(cheat_box, cheat_lable, 5);
 		cheat_box.addItemListener(this);
 
+		//setting for difficulty
 		difficulty_lable = AbstractPanel.getStyledLable(nls.difficultylbl);
 		this.add(difficulty_lable);
 		difficulty_bg = new ButtonGroup();
@@ -128,6 +138,11 @@ public class SettingPanel extends JPanel implements DocumentListener,
 
 	}
 
+	/**
+	 * 
+	* <p>Title: </p>Setting panel for the network
+	* <p>Description: </p> Setting panel provide setting for survive time and other options
+	 */
 	public SettingPanel(NetworkManager networkManager) {
 		this.nls = NLS.getInstance();
 		// for multi-player
@@ -136,6 +151,7 @@ public class SettingPanel extends JPanel implements DocumentListener,
 		this.setBackground(Color.red);
 		this.setOpaque(false);
 
+		//setting for the survive time
 		gameTimelbl = AbstractPanel.getStyledLable(nls.winningTime_lbl);
 		gameTimelbl.setLocation(10, 0);
 		this.add(gameTimelbl);
@@ -159,6 +175,7 @@ public class SettingPanel extends JPanel implements DocumentListener,
 			this.initLabel(gameTimeValuelbl);
 		}
 
+		//setting for the full reveal
 		dark_lable = AbstractPanel.getStyledLable(nls.reveallbl);
 		this.add(dark_lable);
 
@@ -170,6 +187,7 @@ public class SettingPanel extends JPanel implements DocumentListener,
 		AbstractPanel.setUnder(dark_box, dark_lable, 5);
 		dark_box.addItemListener(this);
 
+		//setting for cheat
 		cheat_lable = AbstractPanel.getStyledLable(nls.chatlbl);
 		this.add(cheat_lable);
 
@@ -181,6 +199,7 @@ public class SettingPanel extends JPanel implements DocumentListener,
 		AbstractPanel.setUnder(cheat_box, cheat_lable, 5);
 		cheat_box.addItemListener(this);
 
+		//setting for difficulty
 		difficulty_lable = AbstractPanel.getStyledLable(nls.difficultylbl);
 		this.add(difficulty_lable);
 		difficulty_bg = new ButtonGroup();
@@ -243,6 +262,14 @@ public class SettingPanel extends JPanel implements DocumentListener,
 		inputValidate(e);
 	}
 
+	/**
+	 * 
+	* @Title: inputValidate 
+	* @Description: check whether the input is valid or not
+	* @param @param e
+	* @return void    
+	* @throws
+	 */
 	public void inputValidate(DocumentEvent e) {
 		Document doc = e.getDocument();
 		int gameTime;
@@ -265,11 +292,21 @@ public class SettingPanel extends JPanel implements DocumentListener,
 		}
 
 	}
-
+/**
+ * 
+* @Title: getGameTimeValuelbl 
+* @Description: get the game time value label
+* @param @return
+* @return JLabel    
+* @throws
+ */
 	public JLabel getGameTimeValuelbl() {
 		return gameTimeValuelbl;
 	}
 
+	/**
+	 * listener for all the setting option 
+	 */
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		// TODO Auto-generated method stub
@@ -314,15 +351,39 @@ public class SettingPanel extends JPanel implements DocumentListener,
 
 	}
 
+	/**
+	 * 
+	* @Title: setGameTimeText 
+	* @Description: set the game time
+	* @param @param s
+	* @return void    
+	* @throws
+	 */
 	public void setGameTimeText(String s) {
 		this.gameTimelbl.setText(nls.winningTime_lbl + ": " + s);
 	}
 
+	/**
+	 * 
+	* @Title: setCheatState 
+	* @Description:change the cheat setting
+	* @param 
+	* @return void    
+	* @throws
+	 */
 	public void setCheatState() {
 		this.cheat_box.setSelected(Config.IS_CHEAT_ALLOWED);
 
 	}
 
+	/**
+	 * 
+	* @Title: setRevealState 
+	* @Description: change reveal setting
+	* @param 
+	* @return void    
+	* @throws
+	 */
 	public void setRevealState() {
 		this.dark_box.setSelected(Config.IS_FULL_REVEAL);
 	}

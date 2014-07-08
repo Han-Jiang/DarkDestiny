@@ -22,7 +22,7 @@ import com.darkdensity.util.ImageLoader;
  * 
 * @ClassName: InfoPanel
 * @Description: GUI, show the sprite info which is currently focusing
-* @author Team A1
+* @author Team A1 - Ting Yuen Lam
 * @date 19 Mar 2014 15:10:14
  */
 public class InfoPanel extends AbstractPanel {
@@ -34,6 +34,12 @@ public class InfoPanel extends AbstractPanel {
 	private Rectangle progressBar;
 	private int progressBarWidth = 188;
 	
+	/**
+	 * 
+	* <p>Title: </p>
+	* <p>Description: </p> Construct  a new instance by a JFrame 
+	* @param frame
+	 */
 	public InfoPanel(JFrame frame) {
 		super(frame);
 		//initial the JPanel
@@ -79,6 +85,7 @@ public class InfoPanel extends AbstractPanel {
 		forthIcon.setSize(24, 24);
 		forthIcon.setLocation(240, 110);
 
+		//location and size for each item
 		firstLabel.setSize(50, 24);
 		firstLabel.setLocation(270, 20);
 		firstLabel.setForeground(Color.white);
@@ -111,18 +118,15 @@ public class InfoPanel extends AbstractPanel {
 		progressBar = new Rectangle(35, 137, 0, 0);
 	}
 
+	/**
+	 * paint the panel
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		
 		Graphics2D g2 = (Graphics2D) g;
 		g2.drawImage(infoPanel, 0, 0, this);
-		// if(focusingTile != null){
-		// g2.drawImage(getScaledImage(focusingTile.getImage(),
-		// focusingTile.getTileWidth(), focusingTile.getTileHeight()), 20, 20,
-		// this);
-		// //g2.drawImage(getScaledImage(focusingTile.getImage(), 200, 120), 20,
-		// 20, this);
-		// }
+	
 		if (focusingTile != null) {
 			//get the image
 			Image i = focusingTile.getImage();
@@ -155,6 +159,7 @@ public class InfoPanel extends AbstractPanel {
 	public void setFocusingTile(Tile focusingTile) {
 		this.focusingTile = focusingTile;
 		if (focusingTile == null) {
+			//only show when there is a focusing tile
 			this.setVisible(false);
 		} else {
 			this.setVisible(true);
@@ -179,14 +184,17 @@ public class InfoPanel extends AbstractPanel {
 				forthIcon.setIcon(new ImageIcon(ImageLoader
 						.loadImage(Config.ICON_SPEED)));
 			}
+			//update the text of teh label
 			updateText();
 		}
 	}
 	
 	private void updateText(){
+		//update the building resources information
 			if (focusingTile instanceof Building) {
 				Resource r = ((Building) focusingTile).getResource();
 				
+				//when the building has no resource
 				if (r == null) {
 					firstLabel.setText(": -");
 					secondLabel.setText(": -");
@@ -200,6 +208,7 @@ public class InfoPanel extends AbstractPanel {
 				}
 				progressBar.setSize(progressBarWidth * ((Building) focusingTile).getProgress() / ((Building) focusingTile).getProgressMaximum() , 5);
 			} else {
+				//when the tile si a sprite, show the health and other information
 				firstLabel.setText(": " + focusingTile.getHealth());
 				thirdLabel.setText(": " + focusingTile.getDefense());
 

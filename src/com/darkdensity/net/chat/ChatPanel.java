@@ -28,6 +28,11 @@ import com.darkdensity.setting.NLS;
 public class ChatPanel extends JPanel implements KeyListener {
 	/**
 	 * 
+	 * @ClassName: ChatPanel
+	 * @Description: Chat panel provices a ui for player send & receive text
+	 *               message
+	 * @author Team A1 - Hei Yin Wong
+	 * @date Mar 28, 2014 3:27:21 AM
 	 */
 	private static final long serialVersionUID = 6003306592117278779L;
 	// TODO: change the udp address, and other variable into config.java
@@ -49,6 +54,7 @@ public class ChatPanel extends JPanel implements KeyListener {
 	private CommandFactory commandFactory;
 
 	public ChatPanel() {
+		//Init chat panel with ui component 
 		this.cm = new ChatManager();
 		cheat = new Cheat();
 		this.setBackground(fillColor);
@@ -85,10 +91,11 @@ public class ChatPanel extends JPanel implements KeyListener {
 	}
 
 	protected void sendMessage() {
-
+		// Send out the message
 		String message = tf.getText();
 		try {
 			if (!message.isEmpty()) {
+				// If the input message is a cheat, trigger cheat and return
 				System.out.println("Cheat size: " + cheat.size());
 				String cheatCommandName = cheat.get(message);
 				if (cheatCommandName != null && commandPool != null
@@ -113,8 +120,8 @@ public class ChatPanel extends JPanel implements KeyListener {
 	}
 
 	public void receiveMessage() {
+		// Show the message when message is received
 		while (this.isReceiveMessage) {
-			// System.out.print("TRUE");
 			try {
 				String s = cm.receiveMessage();
 				tv.append(s + "\n"); // TODO: Change to dynamic user name after
@@ -125,7 +132,7 @@ public class ChatPanel extends JPanel implements KeyListener {
 	}
 
 	public void startReceiveMessage() {
-
+		// Start receive message thread
 		this.isReceiveMessage = true;
 		this.receiveMessageRunnable = new Runnable() {
 			public void run() {
@@ -138,6 +145,7 @@ public class ChatPanel extends JPanel implements KeyListener {
 	}
 
 	public void stopReceiveMessage() {
+		// Stop receiving message thread
 		try {
 			this.isReceiveMessage = false;
 			this.cm.closeSocket();

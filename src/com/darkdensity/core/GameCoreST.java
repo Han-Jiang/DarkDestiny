@@ -19,7 +19,7 @@ import com.darkdensity.setting.Constant.GameMode;
 /**
  * 
  * @ClassName: GameCore
- * @Description: Game Core, define game logic and run
+ * @Description: Game Core, define game logic and run, this one is for windows mode
  * @author TeamA1 - Han Jiang
  * 
  */
@@ -52,11 +52,6 @@ public class GameCoreST extends JFrame implements KeyListener {
 
 		Timer sTimer = new Timer(TIMER_DELAY, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// if (mGame.update() != 1) {
-				// ((Timer) e.getSource()).stop();
-				// mGame.deinit();
-				// }
-
 				mGame.gameLoopForSwingTimer();
 			}
 		});
@@ -76,13 +71,6 @@ public class GameCoreST extends JFrame implements KeyListener {
 		setUndecorated(true);
 		
 		showMainPanel();
-		// add game panel
-//		gameWorldPanel = new GameWorldPanel(Config.GAME_WORLD_WIDTH,
-//				Config.GAME_WORLD_HEIGHT, this);
-//		gameWorldPanel.setLocation(Config.MARGIN_HORIZONTAL,
-//				Config.MARGIN_VERTICLE);
-//		gameWorldPanel.setBackground(Color.YELLOW);
-//		add(gameWorldPanel);
 
 		setVisible(true);// show directly
 		// create buffer strategy
@@ -138,13 +126,10 @@ public class GameCoreST extends JFrame implements KeyListener {
 	 * redraw the screen
 	 */
 	private void redrawScreen(Graphics2D g) {
-		//gameCoreFrame.repaint();
 		 paintAll(g);
-		 //gameCoreFrame.paintComponents(g);
 	}
 	
 	public void showMainPanel(){
-//		removeAll();
 		getContentPane().removeAll();
 		MainMenuPanel mp = new MainMenuPanel(this);
 		add(mp);
@@ -166,29 +151,20 @@ public class GameCoreST extends JFrame implements KeyListener {
 	
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-//			this.panel.exitGameWorld();
-//			exitGameWorld();
 			System.out.print("Hello ");
 		}
 		if (e.getKeyCode() == KeyEvent.VK_F1) {
-//			this.panel.exitGameWorld();
 			showMainPanel();
-//			isPanelChange = true;
-//			CURRENT_PANEL = MAIN_PANEL;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_F2) {
-//			this.panel.exitGameWorld();
 			showGamePanel();
-//			isPanelChange = true;
-//			CURRENT_PANEL = GAME_PANEL;
 		}
 		e.consume();
 	}

@@ -48,11 +48,18 @@ public class SoloPanel extends AbstractPanel {
 	private SettingPanel settingPanel;
 	private ArrayList<JButton> teamButtonList;
 
+	/**
+	 * 
+	* <p>Title: </p>
+	* <p>Description: </p> Solo panel, to start game in solo mode
+	* @param parent
+	 */
 	public SoloPanel(JFrame parent) {
 		super(parent);
 
 		setLayout(null);
 
+		//palyer name 
 		JLabel playerListlbl = new JLabel(nls.playernamelbl);
 		playerListlbl.setLocation(30, 100);
 		playerListlbl.setSize(100, 20);
@@ -66,6 +73,7 @@ public class SoloPanel extends AbstractPanel {
 		playerLabel.setSize(200, 20);
 		this.playerLabelList.add(playerLabel);
 
+		//set a team
 		JButton teamButton = new JButton();
 		teamButton.setLocation(200, 100 + 20);
 		teamButton.setSize(150, 20);
@@ -86,6 +94,7 @@ public class SoloPanel extends AbstractPanel {
 		this.initButton(teamButton2);
 		this.teamButtonList.add(teamButton2);
 
+		//start the game
 		startGameBtn = new JButton(nls.startBtn);
 		initButton(startGameBtn);
 		startGameBtn.setSize(100, 20);
@@ -99,18 +108,35 @@ public class SoloPanel extends AbstractPanel {
 
 	}
 
+	/**
+	 * 
+	* @Title: initLabel 
+	* @Description: add attributes and listener to the label
+	* @param @param jLabel
+	* @return void    
+	* @throws
+	 */
 	private void initLabel(JLabel jLabel) {
 		jLabel.setIgnoreRepaint(true);
 		jLabel.setForeground(Color.WHITE);
 		this.add(jLabel);
 	}
 
+	/**
+	 * 
+	* @Title: initButton 
+	* @Description:  add attributes and listener to the button
+	* @param @param button
+	* @return void    
+	* @throws
+	 */
 	protected void initButton(JButton button) {
 		super.initButton(button, listenner);
 		this.add(button);
 
 	}
 
+	//paint the panel
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -130,6 +156,7 @@ public class SoloPanel extends AbstractPanel {
 
 	}
 
+	// add listener to the button
 	ActionListener listenner = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			JButton jb = (JButton) e.getSource();

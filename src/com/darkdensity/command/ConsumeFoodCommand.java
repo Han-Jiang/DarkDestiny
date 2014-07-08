@@ -11,7 +11,7 @@ import com.darkdensity.setting.Constant.PlayerRole;
 /**
 * @ClassName: ConsumeFoodCommand
 * @Description: TODO(What the class do)
-* @author Team A1
+* @author Team A1 - Hei Yin Wong
 */
 
 public class ConsumeFoodCommand extends CommandFactory implements Command{
@@ -36,6 +36,8 @@ public class ConsumeFoodCommand extends CommandFactory implements Command{
 		
 		if(team.getFood() <= 0)
 		{
+			//It doesn't make sense for survivor have negative number of food 
+			//so if survivor do not have enough food, set it to 0 
 			team.setFood(0);
 		}
 	}

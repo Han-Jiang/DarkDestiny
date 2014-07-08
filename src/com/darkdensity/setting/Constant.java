@@ -20,6 +20,13 @@ import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
 import com.eclipsesource.json.JsonValue;
 
+/**
+ * 
+* @ClassName: Constant
+* @Description: define all the constant and unchange resource of the game
+* @author Team A1
+* @date Mar 28, 2014 6:33:42 AM
+ */
 public class Constant {	
 	public enum GameState{
 		INIT, READY, RUNNING, END

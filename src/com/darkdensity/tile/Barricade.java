@@ -49,16 +49,30 @@ public class Barricade extends Tile {
 		focusManager = tileManager.getGameWorld().getFocusManager();
 	}
 
+	/**
+	 * whether the barricade has been destroy
+	 */
 	public boolean isDestroyed() {
 		return destroyed;
 	}
 
+	/**
+	 * 
+	* @Title: upgrade 
+	* @Description: upgrade the barricade
+	* @param 
+	* @return void    
+	* @throws
+	 */
 	public void upgrade() {
 		if (this.level < Constant.BARRICADE_MAX_LEVEL - 1) {
 			this.level++;
 		}
 	}
 
+	/**
+	 * get the bufferedImage for drawing 
+	 */
 	public BufferedImage getImage() {
 		Image i = bufferedImages[((focusing || entered) ? imageOffset : 0)
 				+ direction.ordinal() * Constant.BARRICADE_MAX_LEVEL + level];
@@ -69,6 +83,14 @@ public class Barricade extends Tile {
 		this.direction = direction;
 	}
 
+	/**
+	 * 
+	* @Title: getBlockingArea 
+	* @Description: get the blocking area of the barricade
+	* @param @return
+	* @return ArrayList<Point>    
+	* @throws
+	 */
 	public ArrayList<Point> getBlockingArea() {
 		int centerX = x + tileWidth / 2;
 		int centerY = y + tileHeight / 2;
@@ -80,6 +102,9 @@ public class Barricade extends Tile {
 		return blockingArea;
 	}
 
+	/**
+	 * update the progress of the barricade
+	 */
 	@Override
 	public void progressUpdate(int n) {
 		if (health != maxHealth && level != Constant.BARRICADE_MAX_LEVEL
@@ -91,6 +116,14 @@ public class Barricade extends Tile {
 		}
 	}
 
+	/**
+	 * 
+	* @Title: getConsumeResource 
+	* @Description: get consume resource of the barricade
+	* @param @return
+	* @return Resource    
+	* @throws
+	 */
 	public Resource getConsumeResource() {
 		return consumeResource;
 	}

@@ -15,7 +15,9 @@ import com.darkdensity.core.NetworkManager;
 import com.darkdensity.factory.CommandFactory;
 import com.darkdensity.setting.Config;
 import com.darkdensity.setting.Constant.GameMode;
-
+/** 
+* @author Team A1 - Hei Yin Wong
+*/
 public class GameServer implements Runnable {
 
 	private NetworkManager networkManager;

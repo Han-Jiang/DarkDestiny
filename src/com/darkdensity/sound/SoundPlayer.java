@@ -12,7 +12,13 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
-
+/**
+ * 
+* @ClassName: SoundPlayer
+* @Description: Sound Player control how to play a sound
+* @author Team A1 - Han
+* @date Mar 28, 2014 6:35:13 AM
+ */
 public class SoundPlayer implements Runnable
 {
 
@@ -21,6 +27,13 @@ public class SoundPlayer implements Runnable
     
     private InputStream inputStream; 
 	
+    /**
+     * 
+    * <p>Title: </p>
+    * <p>Description: </p> get a sound player by sound and thread pool
+    * @param sound
+    * @param threadPool
+     */
     public SoundPlayer(Sound sound,ExecutorService threadPool){
     	
     	format = sound.getFormat();
@@ -28,6 +41,15 @@ public class SoundPlayer implements Runnable
     	this.inputStream = new ByteArrayInputStream(sound.getSamples());
     }
     
+    /**
+     * 
+    * <p>Title: </p>
+    * <p>Description: </p>get a sound player by sound and thread pool, a boolean 
+    * for whetehr play repeatedly or not
+    * @param sound
+    * @param threadPool
+    * @param isRepeat
+     */
     public SoundPlayer(Sound sound,ExecutorService threadPool,boolean isRepeat){
     	
     	format = sound.getFormat();
@@ -40,6 +62,14 @@ public class SoundPlayer implements Runnable
     	
     }
     
+    /**
+     * 
+    * @Title: play 
+    * @Description:play the sound
+    * @param 
+    * @return void    
+    * @throws
+     */
     public void play(){
     	
     	threadPool.execute(this);

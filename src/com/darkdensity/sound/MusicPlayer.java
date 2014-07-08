@@ -12,6 +12,13 @@ import javax.sound.sampled.SourceDataLine;
 
 import com.darkdensity.setting.Config;
 
+/**
+ * 
+* @ClassName: MusicPlayer
+* @Description: Music Player can play sound but support pause and play function
+* @author Team A1
+* @date Mar 28, 2014 6:37:22 AM
+ */
 public class MusicPlayer extends Thread {
 
 	public static int STATUS;
@@ -20,28 +27,34 @@ public class MusicPlayer extends Thread {
 	public static final int STOPED = 2;
 	public static final int PLAYING = 3;
 
-	/*
-	 * Class: MusicPlayer extends Thread
-	 * ****************************************** Attributes: private String
-	 * filename; private final int EXTERNAL_BUFFER_SIZE = 524288;
-	 * ****************************************** Methods: public void run() {}
-	 */
-
 	private String filename;
 
 	private static boolean isLoop = false;
 
 	private final int EXTERNAL_BUFFER_SIZE = 524288; // 128Kb
 
+	/**
+	 * 
+	* <p>Title: </p>
+	* <p>Description: </p> init a MusicPlayer with a wav file
+	* @param wavfile
+	 */
 	public MusicPlayer(String wavfile) {
 		STATUS = PLAYING;
-		// init a MusicPlayer with a wav file
+		
 		filename = wavfile;
 	}
 
+	/**
+	 * 
+	* <p>Title: </p>
+	* <p>Description: </p>init a MusicPlayer with a wav file
+	* @param wavfile
+	* @param isLoop
+	 */
 	public MusicPlayer(String wavfile, boolean isLoop) {
 		STATUS = PLAYING;
-		// init a MusicPlayer with a wav file
+		
 		filename = wavfile;
 		this.isLoop = isLoop;
 	}
@@ -57,7 +70,10 @@ public class MusicPlayer extends Thread {
 	public void setMusicPlay() {
 		STATUS = PLAYING;
 	}
-
+	
+	/**
+	 * Play the music
+	 */
 	public void run() {
 		// Get the target file
 		File soundFile = new File(filename);

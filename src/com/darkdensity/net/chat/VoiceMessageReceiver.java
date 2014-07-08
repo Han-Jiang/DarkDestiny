@@ -7,7 +7,10 @@ import java.net.Socket;
 
 import com.darkdensity.net.core.NetUtil;
 import com.darkdensity.setting.Config;
-
+/** 
+* @author Team A1 - Hei Yin Wong
+* @Decription handler for receiving voice message
+*/
 public class VoiceMessageReceiver implements Runnable {
 
 	DataInputStream dataInputStream;
@@ -18,6 +21,7 @@ public class VoiceMessageReceiver implements Runnable {
 
 	
 
+	//init resource
 	public VoiceMessageReceiver(VoiceChatManager cm, Socket socket,
 			boolean isServer) {
 		// TODO Auto-generated constructor stub
@@ -37,7 +41,7 @@ public class VoiceMessageReceiver implements Runnable {
 		// TODO Auto-generated method stub
 		System.out.println("receive message is running");
 		
-		
+		//Keep listen on port 3001, and trigger play audio process when received a message
 		while (isReceiveVoiceMessage) {
 			try{
 			int messageLength = 0;

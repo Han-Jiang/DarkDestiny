@@ -70,7 +70,7 @@ public class TestPoint extends JPanel {
 	    
 	    g2d.drawRect(path.get(path.size()-1).x/16, path.get(path.size()-1).y/16, 2, 2);
 	   // System.out.println("last point: " + path.get(path.size()-1) +" " + endPoint.distance(path.get(path.size()-1)));
-	    g2d.setColor(Color.GREEN);
+	    g2d.setColor(Color.BLUE);
 	   // g2d.drawRect(94,227, 4, 6);
 	    g2d.drawRect(beginPoint.x/16, beginPoint.y/16, 4, 6);
 	    
@@ -81,11 +81,11 @@ public class TestPoint extends JPanel {
 	    g2d.setColor(Color.BLACK);
 	    g2d.drawRect(nearestPoint.x/16, nearestPoint.y/16, 4, 4);
 	    
-	    g2d.setColor(Color.WHITE);
+	    g2d.setColor(Color.BLACK);
 	    g2d.drawRect(nearestPoint2.x/16, nearestPoint2.y/16, 4, 4);
 	    
 	    if(nearestPoint.equals(nearestPoint2)){
-	    	g2d.setColor(Color.GRAY);
+	    	g2d.setColor(Color.RED);
 	    	  g2d.drawRect(nearestPoint2.x/16, nearestPoint2.y/16, 4, 4);
 	    }
 	    //g2d.drawRect(endPoint.x, endPoint.y, 4, 6);

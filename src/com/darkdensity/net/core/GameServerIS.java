@@ -7,7 +7,9 @@ import java.io.InputStreamReader;
 
 import com.darkdensity.core.NetworkManager;
 import com.darkdensity.setting.Config;
-
+/** 
+* @author Team A1 - Hei Yin Wong
+*/
 public class GameServerIS implements Runnable {
 
 	private InputStream is;

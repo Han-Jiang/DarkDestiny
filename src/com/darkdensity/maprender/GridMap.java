@@ -32,6 +32,13 @@ public class GridMap {
 
 	private static boolean completed = false;
 
+	/**
+	 * 
+	* <p>Title: </p>
+	* <p>Description: </p> Construct a new grid map from json file 
+	* @throws FileNotFoundException
+	* @throws IOException
+	 */
 	public GridMap() throws FileNotFoundException, IOException {
 		map = new HashMap<Point, Grid>();
 		readMapJSON("road.json");
@@ -133,6 +140,14 @@ public class GridMap {
 		}
 	}
 	
+	/**
+	 * 
+	* @Title: remove 
+	* @Description: remove the tile form the grid map
+	* @param @param tile
+	* @return void    
+	* @throws
+	 */
 	static public synchronized void remove(Tile tile) {
 		if (tile instanceof Barricade) {
 			ArrayList<Point> blockingArea = ((Barricade) tile)
@@ -150,6 +165,16 @@ public class GridMap {
 	}
 
 
+	/**
+	 * 
+	* @Title: updateGrid 
+	* @Description: update the sprite form previous position point 
+	* to current position point 
+	* @param @param s
+	* @param @param prevPosPoint
+	* @return void    
+	* @throws
+	 */
 	public void updateGrid(Sprite s, Point prevPosPoint) {
 		Grid prevGrid = getGrid(GridMapManager.pxToTileX(prevPosPoint.x),
 				GridMapManager.pxToTileY(prevPosPoint.y));
@@ -177,8 +202,7 @@ public class GridMap {
 		JsonObject jsonObject = JsonObject.readFrom(new FileReader(
 				Config.JSON_PATH + mapPath));
 		JsonArray roads = jsonObject.get("road").asArray();
-		
-//		JsonArray roads = JsonArray.readFrom(new FileReader(Config.JSON_PATH + mapPath));
+	
 		for (JsonValue point : roads) {
 			map.put(new Point(point.asObject().get("x").asInt(),
 					point.asObject().get("y").asInt()), new Grid());
@@ -197,6 +221,14 @@ public class GridMap {
 		return completed;
 	}
 
+	/**
+	 * 
+	* @Title: getMap 
+	* @Description: get the grip map
+	* @param @return
+	* @return HashMap<Point,Grid>    
+	* @throws
+	 */
 	public static HashMap<Point, Grid> getMap() {
 		return map;
 	}

@@ -1,7 +1,9 @@
 package com.darkdensity.net.core;
 
 public class NetConstant {
-	
+	/** 
+	* @author Team A1 - Hei Yin Wong
+	*/
 	
 	//Port 
 	public static int GAME_WORLD_PORT = 3000;

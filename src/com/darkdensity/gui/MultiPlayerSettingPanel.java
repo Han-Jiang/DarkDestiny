@@ -22,8 +22,8 @@ import com.darkdensity.setting.Constant.PlayerRole;
 /**
  * 
  * @ClassName: MultiPlayerSettingPanel
- * @Description: Panel for multiplayer
- * @author Team A1
+ * @Description: Game lobby page for multiplayer
+ * @author Team A1 - Hei Yin Wong
  * @date 19 Mar 2014 15:37:40
  */
 public class MultiPlayerSettingPanel extends AbstractPanel {
@@ -34,9 +34,16 @@ public class MultiPlayerSettingPanel extends AbstractPanel {
 	private ChatPanel chatPanel;
 	private JLabel serverIPLbl;
 	private JButton sendVoiceMessageBtn;
-	private SettingPanel settingPanel;
+	private SettingPanel settingPanel; //The small setting panel in the right hand side
 	private ArrayList<JButton> teamButtonList;
 
+	/**
+	 * 
+	* <p>Title: </p>
+	* <p>Description: </p> construct a new multi player mode 
+	* @param parent
+	* @param networkManager
+	 */
 	public MultiPlayerSettingPanel(JFrame parent, NetworkManager networkManager) {
 		super(parent);
 		this.networkManager = networkManager;
@@ -55,6 +62,7 @@ public class MultiPlayerSettingPanel extends AbstractPanel {
 		this.playerLabelList = new ArrayList<JLabel>();
 		this.teamButtonList = new ArrayList<JButton>();
 
+		//labels show the palyer's infomation
 		for (int i = 1; i < 5; i++) {
 			JLabel playerLabel = new JLabel("Waiting for connect");
 			initLabel(playerLabel);
@@ -70,6 +78,7 @@ public class MultiPlayerSettingPanel extends AbstractPanel {
 			this.teamButtonList.add(teamButton);
 		}
 
+		//start the game 
 		if (networkManager.getServerSocket() != null) {
 			startGameBtn = new JButton("Start Game");
 			initButton(startGameBtn);
@@ -77,18 +86,21 @@ public class MultiPlayerSettingPanel extends AbstractPanel {
 			startGameBtn.setLocation(
 					parent.getWidth() - startGameBtn.getWidth(), 20);
 		}
-
+		
+		// chat panel
 		chatPanel = new ChatPanel();
 		chatPanel.setLocation(10, this.getHeight() - chatPanel.getHeight());
 		add(chatPanel);
 		chatPanel.startReceiveMessage();
 
+		// send voice message 
 		sendVoiceMessageBtn = new JButton("Send voice message");
 		initButton(sendVoiceMessageBtn);
 		sendVoiceMessageBtn.setSize(100, 20);
 		sendVoiceMessageBtn.setLocation(chatPanel.getWidth(),
 				this.getHeight() - 40);
 
+		//setting panel for color biling, full reveal and so om
 		settingPanel = new SettingPanel(networkManager);
 		this.add(settingPanel);
 		settingPanel

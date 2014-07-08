@@ -7,7 +7,13 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 import com.darkdensity.net.core.NetUtil;
-
+/**
+ * 
+* @ClassName: ChatManager
+* @Description: Chat manager manage all the fucntions related to chat
+* @author Team A1 - Hei Yin Wong
+* @date Mar 28, 2014 3:27:21 AM
+ */
 public class VoiceChatServer extends VoiceChatManager {
 
 	private ServerSocket serverSocket;
@@ -17,7 +23,7 @@ public class VoiceChatServer extends VoiceChatManager {
 
 	public VoiceChatServer() {
 		super();
-
+		
 		try {
 			this.serverSocket = new ServerSocket(3001);
 			clients = new ArrayList<Socket>();

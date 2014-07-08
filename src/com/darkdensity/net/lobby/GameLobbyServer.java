@@ -11,7 +11,9 @@ import com.darkdensity.core.NetworkManager;
 import com.darkdensity.net.core.NetConstant;
 import com.darkdensity.net.core.NetUtil;
 import com.darkdensity.setting.Config;
-
+/** 
+* @author Team A1 - Hei Yin Wong
+*/
 public class GameLobbyServer extends GameLobby {
 	private ServerSocket serverSocket;
 	private ArrayList<Socket> clients;

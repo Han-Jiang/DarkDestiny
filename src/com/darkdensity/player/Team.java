@@ -6,7 +6,7 @@ import com.darkdensity.setting.Constant.PlayerRole;
 /**
  * 
 * @ClassName: Team
-* @Description: A team have resource hand player
+* @Description: A team have resource and player role
 * @author Team A1
 * @date 19 Mar 2014 16:14:11
  */
@@ -27,6 +27,14 @@ public class Team {
 		this.foodConsume = foodConsume;
 	}
 	
+	/**
+	 * 
+	* @Title: getNumOfSprite 
+	* @Description: get the number of sprite
+	* @param @return
+	* @return int    
+	* @throws
+	 */
 	public int getNumOfSprite(){
 		return (playerRole == PlayerRole.SURVIVOR)? tileManager.getSurvivorsNum(): tileManager.getZombiesNum();
 	}

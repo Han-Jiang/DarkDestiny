@@ -58,7 +58,8 @@ import com.darkdensity.util.ImageLoader;
 
 /**
  * @ClassName: GameWorld
- * @Description: TODO(What the class do)
+ * @Description: A class that implements all game logic and hold the game loop.
+ *               It will use different "Manager" to complete work
  * @author Team A1
  */
 
@@ -113,6 +114,7 @@ public class GameWorld extends JLayeredPane {
 	private long zombieGenerationTimer;
 	private long consumeFoodTimer;
 
+	// sount the FPS
 	private long nextSecond = System.currentTimeMillis() + 1000;
 	private int FPS = 0;
 	private int FPSCounter = 0;
@@ -152,11 +154,12 @@ public class GameWorld extends JLayeredPane {
 		Runnable gameWorldRunnable = new Runnable() {
 			@Override
 			public void run() {
-
+				// satrt the game loop only when the map is ready
 				while (GameWorld.this.frame.getBufferStrategy() == null
 						|| !gridMapManager.gridMap.isCompleted()
 						|| tileManager.getState() != TileManagerState.READY) {
 					try {
+						// initial the tile manger
 						if (gameMode == GameMode.SOLO) {
 							tileManager.init();
 							commandPool.execute();
@@ -167,7 +170,7 @@ public class GameWorld extends JLayeredPane {
 						}
 					}
 				}
-
+				// game loading panel
 				long loadingCounter = 0;
 				do {
 					gameLoadingPanel.setProgress(loadingCounter++);
@@ -231,13 +234,14 @@ public class GameWorld extends JLayeredPane {
 		focusManager.setGridMapManager(gridMapManager);
 		tileManager = new TileManager(this);
 		tileManager.setFocusManager(focusManager);
-
+		// get subpath manager
 		subPathManager = new SubPathManager();
 		tileManager.addObserver(subPathManager);
 
 		commandPool = new CommandPool(this);
 
 		commandFactory = new CommandFactory();
+		// set commond factory when when is solo mode
 		if (gameMode == GameMode.SOLO) {
 			commandFactory.setGameWorld(this);
 			commandFactory.setGridMap(gridMapManager.gridMap);
@@ -249,8 +253,12 @@ public class GameWorld extends JLayeredPane {
 
 		// set up the team
 		teams = new HashMap<Constant.PlayerRole, Team>();
-		Team survivorTeam = new Team(Config.SURVIVOR_START_FOOD, Config.SURVIVOR_START_WOOD, Config.SURVIVOR_START_WOOD, PlayerRole.SURVIVOR);
-		Team zombieTeam = new Team(Config.ZOMBIE_START_FOOD, Config.ZOMBIE_START_WOOD, Config.ZOMBIE_START_IRON, PlayerRole.ZOMBIE);
+		Team survivorTeam = new Team(Config.SURVIVOR_START_FOOD,
+				Config.SURVIVOR_START_WOOD, Config.SURVIVOR_START_WOOD,
+				PlayerRole.SURVIVOR);
+		Team zombieTeam = new Team(Config.ZOMBIE_START_FOOD,
+				Config.ZOMBIE_START_WOOD, Config.ZOMBIE_START_IRON,
+				PlayerRole.ZOMBIE);
 		survivorTeam.setTileManager(tileManager);
 		zombieTeam.setTileManager(tileManager);
 		teams.put(PlayerRole.SURVIVOR, survivorTeam);
@@ -258,7 +266,7 @@ public class GameWorld extends JLayeredPane {
 
 		miniMapPanel = new MiniMapPanel(frame, tileManager);
 		topMenuPanel = new TopMenuPanel(frame);
-
+		// initialize the fucntion panel and info panel
 		funcPanel = new FuncPanel(frame);
 		funcPanel.setGameWorld(this);
 		funcPanel.setFocusManager(focusManager);
@@ -321,21 +329,6 @@ public class GameWorld extends JLayeredPane {
 		if (gameMode == GameMode.SOLO) {
 			chatPanel.setCommandPool(this);
 		}
-
-		// }
-
-		// add(gameLoadingPanel, JLayeredPane.DRAG_LAYER);
-
-		// add(tileManager.getTilePanel(), JLayeredPane.PALETTE_LAYER);
-		// if (!Config.FULL_REVEAL) {
-		// add(shadowPanel, JLayeredPane.MODAL_LAYER);
-		// }
-		// add(mapForegroundPanel, JLayeredPane.MODAL_LAYER);
-		// add(miniMapPanel, JLayeredPane.DRAG_LAYER);
-		// add(topMenuPanel, JLayeredPane.DRAG_LAYER);
-		// add(infoPanel, JLayeredPane.DRAG_LAYER);
-		// add(funcPanel, JLayeredPane.DRAG_LAYER);
-		// add(buildPanel, JLayeredPane.POPUP_LAYER);
 
 		add(mapPanel, JLayeredPane.DEFAULT_LAYER);// 0
 		add(tileManager.getTilePanel(), JLayeredPane.PALETTE_LAYER);// 100
@@ -421,6 +414,7 @@ public class GameWorld extends JLayeredPane {
 						e1.printStackTrace();
 					}
 				}
+				//Check if the game is should end
 				if (Config.IS_SERVER && winningTeam != null) {
 					commandFactory.setPlayerRole(winningTeam);
 					commandFactory.createCommand("GameEndCommand");
@@ -433,22 +427,26 @@ public class GameWorld extends JLayeredPane {
 	}
 
 	public GameState gameLoopCore() {
+		//implement the core part in game loop
 		elapsedTime = System.currentTimeMillis() - currentTime;
 		currentTime = System.currentTimeMillis();
 		timeLeft -= elapsedTime;
 		zombieGenerationTimer += elapsedTime;
 		// update
+		//Generate zombies every X second, this can be set in config.java
 		if (zombieGenerationTimer > Config.ZOMBIE_GENERATION_TIME) {
 			tileManager.generateZombie();
 			zombieGenerationTimer -= Config.ZOMBIE_GENERATION_TIME;
 		}
 
+		//Implement the food consumption logic in survivor team
 		if (Config.IS_NETWORK_MODE || Config.IS_SERVER) {
 			consumeFoodTimer += elapsedTime;
 			if (consumeFoodTimer > Config.CONSUME_FOOD_TIMER) {
 				commandFactory.createCommand("ConsumeFoodCommand");
 				consumeFoodTimer -= Config.CONSUME_FOOD_TIMER;
 
+				//Kill survivor if they don't have enough food
 				if (getTeam(PlayerRole.SURVIVOR).getFood() <= 0) {
 					commandFactory.setFocusID(tileManager.getSurivors().get(0)
 							.getUUID());
@@ -479,6 +477,7 @@ public class GameWorld extends JLayeredPane {
 
 	}
 
+	//Trigger the update method in each tiles, to provide visiable change to player
 	public void update(long elapsedTime) throws Throwable {
 		commandPool.execute();
 		ArrayList<Tile> tiles = tileManager.getAllTile();
@@ -489,6 +488,7 @@ public class GameWorld extends JLayeredPane {
 	}
 
 	public void cameraScolling() {
+		//To handle the camera scrolling process when user place their cursor onto the frame
 
 		int SCREEN_MOVE_SPEED = Config.SCREEN_MOVE_SPEED;
 
@@ -659,6 +659,7 @@ public class GameWorld extends JLayeredPane {
 		return commandPool;
 	}
 
+	//Trigger the init sprite method in tile manager to init the tile in the game start
 	public void initSprite() {
 		try {
 			if (networkManager.getServerSocket() != null) {
@@ -685,7 +686,7 @@ public class GameWorld extends JLayeredPane {
 		iRenderY = 1200;
 		gameWorldThread.start();
 		frame.requestFocusInWindow();
-		
+
 	}
 
 	public CommandFactory getCommandFactory() {
@@ -721,7 +722,7 @@ public class GameWorld extends JLayeredPane {
 	}
 
 	public void gameEnd(PlayerRole role) {
-
+		//Show appropriate message and play music when user win / lose the game
 		if (role.equals(Config.PLAYER_ROLE)) {
 			Image bimage = ImageLoader.loadImage(Config.IMG_WINNING_PATH);
 			JLabel jLabel = new JLabel(new ImageIcon(bimage));
@@ -746,6 +747,8 @@ public class GameWorld extends JLayeredPane {
 		gameState = GameState.END;
 	}
 
+	
+	//Update player's team resource 
 	public void consumeTeamResource(PlayerRole role, Resource resource) {
 		commandFactory.setPlayerRole(role);
 		commandFactory.setResourse(resource.getFood(), resource.getWood(),

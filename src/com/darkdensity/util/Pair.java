@@ -2,10 +2,10 @@ package com.darkdensity.util;
 /**
  * 
 * @ClassName: Pair
-* @Description: A pair class
-* @author Han
-* @date 2014年 下午3:35:37
-* @param <FST> 
+* @Description: A pair data structure
+* @author Team A1 - Han
+* @date Mar 28, 2014 6:44:03 AM
+* @param <FST>
 * @param <SND>
  */
 public class Pair<FST,SND> {

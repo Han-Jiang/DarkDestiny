@@ -28,6 +28,13 @@ enum ShadowState {
 	INIT, READY
 };
 
+/**
+ * 
+* @ClassName: ShadowPanel
+* @Description: Shawdow panel is used to control whether the map is full-reveal or not
+* @author Team A1
+* @date Mar 28, 2014 1:43:15 AM
+ */
 public class ShadowPanel extends JPanel {
 	private JFrame frame;
 	private TileManager tileManager;
@@ -35,6 +42,12 @@ public class ShadowPanel extends JPanel {
 	private ShadowState shadowState;
 	private VolatileImage volatileImg;
 
+	/**
+	 * 
+	* <p>Title: </p>
+	* <p>Description: </p> construct a new shadow panel with JFrame
+	* @param frame
+	 */
 	public ShadowPanel(JFrame frame) {
 		this.frame = frame;
 		shadowState = ShadowState.INIT;
@@ -43,19 +56,27 @@ public class ShadowPanel extends JPanel {
 		setLayout(null);
 	}
 
+	/**
+	 * paint the panel
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponents(g);
+		
+		//get the graphic
 		Graphics2D g2d = (Graphics2D) g;
 		GraphicsEnvironment ge = GraphicsEnvironment
 				.getLocalGraphicsEnvironment();
 		GraphicsConfiguration gc = ge.getDefaultScreenDevice()
 				.getDefaultConfiguration();
+		//creat buffer iamge
 		BufferedImage buffer = gc.createCompatibleImage(frame.getWidth(),
 				frame.getHeight(), Transparency.TRANSLUCENT);
 		Graphics2D graphics = buffer.createGraphics();
+		//control fog area
 		Area fogArea = new Area(new Rectangle(0, 0, frame.getWidth(),
 				frame.getHeight()));
+		//get all the tile	
 		ArrayList<Tile> tiles = new ArrayList<Tile>();
 		if (Config.PLAYER_ROLE == PlayerRole.SURVIVOR) {
 			tiles.addAll(tileManager.getSurivors());
@@ -64,6 +85,7 @@ public class ShadowPanel extends JPanel {
 			tiles.addAll(tileManager.getZombies());
 		}
 
+		//subtruct the fog area with the tile's reveal area
 		for (Tile tile : tiles) {
 			int centerX = tile.getX() + tile.getTileWidth() / 2
 					- GameWorld.iRenderX - tile.getReveal() / 2;
@@ -82,19 +104,35 @@ public class ShadowPanel extends JPanel {
 					.sin(GameWorld.getTimeLeft() % Constant.DAY_PERIOD * Math.PI / Constant.DAY_PERIOD) * 63 + 64);
 		}
 	
+		// draw a dark layer
 		graphics.setColor(new Color(0, 0, 0, alphaValue));
 		graphics.fill(fogArea);
 		graphics.dispose();
 		g2d.drawImage(buffer, null, 0, 0);
 	}
 
+	/**
+	 * 
+	* @Title: setTileManager 
+	* @Description: set the tile manager
+	* @param @param tileManager
+	* @return void    
+	* @throws
+	 */
 	public void setTileManager(TileManager tileManager) {
 		this.tileManager = tileManager;
 		this.gameWorld = tileManager.getGameWorld();
 		setSize(gameWorld.getWorldSize().width, gameWorld.getWorldSize().height);
 	}
 
-	// This method produces a new volatile image.
+	/**
+	 * 
+	* @Title: createBackBuffer 
+	* @Description:  This method produces a new volatile image.
+	* @param 
+	* @return void    
+	* @throws
+	 */
 	private void createBackBuffer() {
 		GraphicsConfiguration gc = getGraphicsConfiguration();
 		volatileImg = gc.createCompatibleVolatileImage(getWidth(), getHeight());

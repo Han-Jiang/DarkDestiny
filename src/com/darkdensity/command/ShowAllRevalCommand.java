@@ -7,8 +7,8 @@ import com.darkdensity.factory.CommandFactory;
 
 /**
 * @ClassName: ShowAllRevalCommand
-* @Description: TODO(What the class do)
-* @author Team A1 - Ting Yuen Lam
+* @Description: To set reval to full reval when user input cheat "how do you turn this on"
+* @author Team A1 - Hei Yin Wong
 */
 
 public class ShowAllRevalCommand extends CommandFactory implements Command{

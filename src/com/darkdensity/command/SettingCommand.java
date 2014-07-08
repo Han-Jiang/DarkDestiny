@@ -11,7 +11,7 @@ import com.darkdensity.setting.Config;
  * 
 * @ClassName: SettingCommand
 * @Description: Change setting of the game 
-* @author Team A1 - Ting Yuen Lam
+* @author Team A1 - Hei Yin Wong
  */
 public class SettingCommand extends CommandFactory implements Command{
 

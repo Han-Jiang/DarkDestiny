@@ -64,7 +64,6 @@ public class FocusManager {
 	* @return void    
 	* @throws 
 	*/ 
-	
 	public void setFuncPanel(FuncPanel funcPanel) {
 		this.funcPanel = funcPanel;
 	}
@@ -135,8 +134,7 @@ public class FocusManager {
 	* @param @param tiles
 	* @return void    
 	* @throws 
-	*/ 
-	
+	*/
 	public void highlight(ArrayList<Tile> tiles) {
 		blur();
 		for (Tile t : tiles) {
@@ -156,7 +154,6 @@ public class FocusManager {
 	* @return void    
 	* @throws 
 	*/ 
-	
 	private void blur() {
 		for (Tile t : focusingTile) {
 			t.blur();

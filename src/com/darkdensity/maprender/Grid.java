@@ -14,18 +14,29 @@ import com.darkdensity.tile.Tile;
 public class Grid extends LinkedList<Tile>{
 	private Boolean blocked;
 	
+	/**
+	 * construct a new grid 
+	 */
 	public Grid(){
 		blocked = false;
 	}
-
+	/**
+	 * see whether the grid 
+	 */
 	public Boolean isBlocked() {
 		return blocked;
 	}
 
+	/**
+	 * block the grid
+	 */
 	public void block() {
 		this.blocked = true;
 	}
 	
+	/**
+	 * release the grid
+	 */
 	public void release() {
 		this.blocked = false;
 	}

@@ -15,6 +15,13 @@ import com.darkdensity.factory.CommandFactory;
 import com.darkdensity.setting.Cheat;
 import com.darkdensity.setting.Config;
 
+/**
+ * 
+* @ClassName: ChatManager
+* @Description: Chat manager manage all the fucntions related to chat
+* @author Team A1 - Hei Yin Wong
+* @date Mar 28, 2014 3:27:21 AM
+ */
 public class ChatManager {
 
 	private MulticastSocket mcastSocket;
@@ -24,6 +31,7 @@ public class ChatManager {
 	private CommandFactory commandFactory;
 
 	public ChatManager() {
+		//Create a UDP multicast object
 		cheat = new Cheat();
 		try {
 			mcastSocket = new MulticastSocket(Config.CHAT_PORT);
@@ -39,6 +47,7 @@ public class ChatManager {
 	}
 
 	public String receiveMessage() throws IOException {
+		//Handle receiving message process
 		byte buf[] = new byte[1024];
 		DatagramPacket datapack = new DatagramPacket(buf, buf.length);
 		mcastSocket.receive(datapack);
@@ -47,7 +56,7 @@ public class ChatManager {
 	}
 
 	public void sendMessage(String message) throws Exception {
-
+		//Send message
 		message = Config.PLAYER_NAME + ": " + message;
 		byte[] buf = message.getBytes();
 		DatagramPacket pack = new DatagramPacket(buf, buf.length,
@@ -61,6 +70,7 @@ public class ChatManager {
 	}
 
 	public void setCommandPool(GameWorld gameworld) {
+		//Command is required for handling cheat
 		// TODO Auto-generated method stub
 		this.commandPool = gameworld.getCommandPool();
 		this.commandFactory.setCommandPool(gameworld.getCommandPool());

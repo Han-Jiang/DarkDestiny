@@ -168,9 +168,7 @@ public class Path {
 			currentSubPath = subPaths.get(0);
 			isEnd = false;
 		}
-//		System.out.println("subpaths");
-//		for(int i=0;i<subPaths.size();i++)
-//			System.out.println(subPaths.get(i).getPath());
+
 	}
 
 

@@ -38,7 +38,7 @@ import com.darkdensity.tile.SmallBarricade;
  * 
  * @ClassName: BuildPanel
  * @Description: BuildPanel, panel for build barricade
- * @author Team A1
+ * @author Team A1 - Hei Yin Wong, Ting Yuen Lam
  * @date 19 Mar 2014 14:47:53
  */
 public class BuildPanel extends JPanel implements KeyListener, MouseListener,
@@ -64,6 +64,14 @@ public class BuildPanel extends JPanel implements KeyListener, MouseListener,
 	Barricade currBarricade;
 	Team survivorTeam;
 
+	/**
+	 * 
+	* <p>Title: </p>
+	* <p>Description: </p> This panel is for building barricade, it show the barricade's
+	* animation and show it with different color to indicate whether it can be build at that place
+	* @param gameworld
+	* @throws IOException
+	 */
 	public BuildPanel(GameWorld gameworld) throws IOException {
 		// initial the panel
 		setSize(gameworld.getWidth(), gameworld.getHeight());
@@ -81,6 +89,7 @@ public class BuildPanel extends JPanel implements KeyListener, MouseListener,
 
 		barricadeDirection = barricadeDirection.RIGHT;
 
+		// add key listener for chang of the barricade's position
 		this.addKeyListener(this);
 		gameworld.getFrame().addKeyListener(this);
 		// gameworld.getFrame().addMouseListener(this);
@@ -88,6 +97,7 @@ public class BuildPanel extends JPanel implements KeyListener, MouseListener,
 		this.addMouseMotionListener(this);
 		// this.requestFocus();
 
+		
 		tileManager = gameworld.getTileManager();
 
 		// initial barricade
@@ -125,6 +135,14 @@ public class BuildPanel extends JPanel implements KeyListener, MouseListener,
 		}
 	}
 
+	/**
+	 * 
+	* @Title: resourceCheck 
+	* @Description: check whether the player has enough resource to build brricade
+	* @param @return
+	* @return Boolean    
+	* @throws
+	 */
 	public Boolean resourceCheck() {
 		Resource consumeResource = currBarricade.getConsumeResource();
 		if (survivorTeam.getWood() < consumeResource.getWood()
@@ -176,6 +194,7 @@ public class BuildPanel extends JPanel implements KeyListener, MouseListener,
 					currBarricade.getWidth(), currBarricade.getHeight());
 			g2d.fill(rect);
 		}
+		//draw the barricade image
 		g2d.drawImage(currBarricade.getImage(), rectX, rectY,
 				currBarricade.getTileWidth(), currBarricade.getTileHeight(),
 				this);
@@ -189,12 +208,6 @@ public class BuildPanel extends JPanel implements KeyListener, MouseListener,
 			barricadeDirection = (barricadeDirection == BarricadeDirection.LEFT) ? BarricadeDirection.RIGHT
 					: BarricadeDirection.LEFT;
 			currBarricade.setDirection(barricadeDirection);
-			// } else if(e.getKeyCode() == KeyEvent.VK_1){
-			// blockingAreas = (blockingAreas == Constant.SB_BLOCKINGAREA) ?
-			// Constant.LB_BLOCKINGAREA : Constant.SB_BLOCKINGAREA;
-			// currBarricade = (blockingAreas == Constant.SB_BLOCKINGAREA) ?
-			// smallBarricade : largeBarricade;
-			// currBarricade.setDirection(barricadeDirection);
 		} else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 			this.setVisible(false);
 			e.consume();
@@ -203,31 +216,49 @@ public class BuildPanel extends JPanel implements KeyListener, MouseListener,
 		}
 	}
 
+	/**
+	 * dispatch the key event to the gameWorld
+	 */
 	@Override
 	public void keyReleased(KeyEvent e) {
 		gameWorld.dispatchEvent(e);
 	}
 
+	/**
+	 * dispatch the key event to the gameWorld
+	 */
 	@Override
 	public void keyTyped(KeyEvent e) {
 		gameWorld.dispatchEvent(e);
 	}
 
+	/**
+	 * dispatch the key event to the gameWorld
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		gameWorld.dispatchEvent(e);
 	}
 
+	/**
+	 * dispatch the key event to the gameWorld
+	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		gameWorld.dispatchEvent(e);
 	}
 
+	/**
+	 * dispatch the key event to the gameWorld
+	 */
 	@Override
 	public void mouseExited(MouseEvent e) {
 		gameWorld.dispatchEvent(e);
 	}
 
+	/**
+	 * build a barricade where the mouse is clicked
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// check if it is left click and the area is allowed for building
@@ -244,21 +275,38 @@ public class BuildPanel extends JPanel implements KeyListener, MouseListener,
 		}
 	}
 
+	/**
+	 * dispatch the key event to the gameWorld
+	 */
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		gameWorld.dispatchEvent(e);
 	}
 
+	/**
+	 * dispatch the key event to the gameWorld
+	 */
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		gameWorld.dispatchEvent(e);
 	}
 
+	/**
+	 * dispatch the key event to the gameWorld
+	 */
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		gameWorld.dispatchEvent(e);
 	}
 
+/**
+ * 
+* @Title: setBarricade 
+* @Description: set the barricade attribution
+* @param @param barricade
+* @return void    
+* @throws
+ */
 	public void setBarricade(BarricadeClass barricade) {
 		blockingAreas = (barricade == BarricadeClass.LargerBarricade) ? Constant.LB_BLOCKINGAREA
 				: Constant.SB_BLOCKINGAREA;

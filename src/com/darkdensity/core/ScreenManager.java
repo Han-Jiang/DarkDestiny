@@ -33,12 +33,29 @@ public class ScreenManager {
 		device = environment.getDefaultScreenDevice();
 	}
 
+	/**
+	 * 
+	* @Title: getCurrentDisplayMode 
+	* @Description:ge current display mode
+	* @param @return
+	* @return DisplayMode    
+	* @throws
+	 */
 	public DisplayMode getCurrentDisplayMode() {
 		//Get the default display mode EG: 1280 X 800 for mac book pro
 		return device.getDisplayMode();
 	}
 
-	
+	/**
+	 * 
+	* @Title: getFisrtSupportedDisplayMode 
+	* @Description: get the first supported display mode in a list of defined
+	*  display mode
+	* @param @param modes
+	* @param @return
+	* @return DisplayMode    
+	* @throws
+	 */
 	public DisplayMode getFisrtSupportedDisplayMode(DisplayMode[] modes){
 		DisplayMode supportedModes[] = device.getDisplayModes();
         for (int i = 0; i < modes.length; i++) {
@@ -53,12 +70,27 @@ public class ScreenManager {
 	
 	
 
-	
+	/**
+	 * 
+	* @Title: getSupportedDisplayModes 
+	* @Description: get the supported diplay mode
+	* @param @return
+	* @return DisplayMode[]    
+	* @throws
+	 */
     public DisplayMode[] getSupportedDisplayModes() {
         return device.getDisplayModes();
     }
     
     
+    /**
+     * 
+    * @Title: setFullScreen 
+    * @Description: set to full screen with a display mode
+    * @param @param displayMode
+    * @return void    
+    * @throws
+     */
 	public void setFullScreen(DisplayMode displayMode) {
 		//Create and init a full screen JFrame
 		final JFrame frame = new JFrame();
@@ -96,6 +128,14 @@ public class ScreenManager {
 
 	}
 
+	/**
+	 * 
+	* @Title: getFullScreenWindow 
+	* @Description: return a full screen windows
+	* @param @return
+	* @return JFrame    
+	* @throws
+	 */
 	public JFrame getFullScreenWindow() {
 		//Get a full screen JFrame 
 		return (JFrame) device.getFullScreenWindow();

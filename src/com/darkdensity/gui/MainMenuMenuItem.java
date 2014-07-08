@@ -1,5 +1,14 @@
 package com.darkdensity.gui;
 
+/**
+ * @ClassName: MainMenuMenuItem
+ * @Description: TODO(What the class do)
+ * @author Team A1 - Hei Yin Wong
+ * @date 24 Mar 2014 23:01:48
+ */
+
+
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -25,7 +34,6 @@ class MainMenuMenuItem extends JPanel {
 		private JButton options;
 		private JButton exit;
 
-		// Elastic elastic = new Elastic(0, 100);
 		//main menu for the game
 		public MainMenuMenuItem() {
 			
@@ -39,6 +47,8 @@ class MainMenuMenuItem extends JPanel {
 			setSize(250, 400);
 			this.setOpaque(false);
 			
+			
+			//get all the styled button
 			solo = AbstractPanel.getStyledFunctionButton(nls.soloBtn);
 			coop = AbstractPanel.getStyledFunctionButton(nls.coopBtn);
 			versus = AbstractPanel.getStyledFunctionButton(nls.vsBtn);
@@ -66,6 +76,10 @@ class MainMenuMenuItem extends JPanel {
 			button.addActionListener(listenner);
 			this.add(button);
 		}
+		
+		/**
+		 * paint the component
+		 */
 		@Override
 		public void paintComponent(Graphics g) {
 			g.setColor(fillColor);
@@ -83,15 +97,20 @@ class MainMenuMenuItem extends JPanel {
 				JFrame jFrame = (JFrame) getRootPane().getParent();
 				
 				if (jb.equals(solo)) {
+					// enter the solo panel 
 					jFrame.setContentPane(new SoloPanel(jFrame));
 					
 				} else if (jb.equals(coop)) {
+					// enter the solo panel
 					jFrame.setContentPane(new SoloPanel(jFrame));
 					
 				} else if (jb.equals(versus)) {
+					
+					// enter the versus panel
 					jFrame.setContentPane(new VersusPanel(jFrame));
 					
 				} else if (jb.equals(options)) {
+					
 					jFrame.setContentPane(new OptionPanel(jFrame));
 					
 				}else if (jb.equals(exit)) {

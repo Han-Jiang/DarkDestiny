@@ -1,9 +1,9 @@
 package com.darkdensity.setting;
 /**
  * 
-* @ClassName: NLS_zh_HK
-* @Description: Cantonese language file for the game
-* @author Team A1
+* @ClassName: NLS_es
+* @Description: National language support file for the game
+* @author Team A1 - heiyin wong
 * @date 19 Mar 2014 16:19:31
  */
 public class NLS_es extends NLS {

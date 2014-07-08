@@ -17,6 +17,12 @@ import com.darkdensity.setting.Constant;
 import com.darkdensity.setting.Constant.Direction;
 import com.darkdensity.util.Pair;
 
+/**
+* @ClassName: SimpleAStarSearch
+* @Description: Advanced Astar Search that uses to find the order of crosses
+* @author Team A1 - Yingjing Feng
+*/
+
 public class SimpleAStarSearch {
 	Point beginPoint;
 	Point endPoint;
@@ -68,7 +74,16 @@ public class SimpleAStarSearch {
 
 	}
 
-	// Astar Search
+
+	/** 
+	* @Title: Search 
+	* @Description: Astar Search
+	* @param @return
+	* @param @throws IOException
+	* @return boolean    
+	* @throws 
+	*/ 
+	
 	public boolean Search() throws IOException {
 		
 		if(isCompleted){
@@ -105,33 +120,17 @@ public class SimpleAStarSearch {
 					&& currentNode.getPos().y == endNode.getPos().y) {
 
 				isCompleted = true;
-				// calculate the solutionList
+
 				this.calSolutionPath();
 
 				break;
 			}
 
-			// set the current node as their parent node
-			// sort them according to the estimated value (from small to big)
-			// append them to the openList.
 
 			this.openList.removeElementAt(0);
 			this.closeList.addElement(this.currentNode);
 			searchedNodesNum++;
 
-			// to record and show the searching procedure
-			// System.out.println("Searching.....Number of searched nodes:"
-			// + this.closeList.size()
-			// + "   Current state:"
-			// + this.currentNode.getPos().toString()
-			// + "parent Node:"
-			// + (this.currentNode.getParent() == null ? ""
-			// : this.currentNode.getParent().getPos().toString()));
-
-			// (2-3) Find the neighbouring grids of the current node
-			// set the current node as their parent node
-			// sort them according to the estimated value (from small to big)
-			// and append them to the openList.
 
 			followNodes = this.findFollowaNodes(this.currentNode);
 			// System.out.print("currentNode"+currentNode.getTile()+"follow"+followNodes.size());
@@ -139,15 +138,10 @@ public class SimpleAStarSearch {
 				this.sortedInsertOpenList((SimpleAStarNode) followNodes.elementAt(0));
 				followNodes.removeElementAt(0);
 			}
-			// System.out.print("open list"+openList.size()+"close list" +
-			// closeList.size());
+
 
 		}
-		// System.out.println("is complete?"+isCompleted + "is empty? " +
-		// openList.isEmpty());
-		// this.printResult(pw); // record the searching result
-		// pw.close(); // close the output handle
-		// System.out.print("Record into " + filePath);
+
 		return isCompleted;
 	}
 
@@ -207,43 +201,7 @@ public class SimpleAStarSearch {
 			pw = new PrintWriter(new FileWriter("Result.txt"));
 			flag = true;
 		}
-		if (this.isCompleted == true) {
-			// to the file
-			// pw.println("Path Finding Completed");
-			// pw.println("Begin state:" + beginNode.toString());
-			// pw.println("End state:" + endNode.toString());
-			// pw.println("Solution Path: ");
-			// pw.println(getSolutionPathString());
-			// pw.println("Total number of searched nodes:" + searchedNodesNum);
-			// pw.println("Length of the solution path is:"
-			// + currentNode.getNodeDepth());
 
-			// to the console
-//			System.out.println("Path Finding Completed");
-//			System.out.println("Begin state:" + beginNode.posPoint.toString());
-//			System.out.println("End state:" + endNode.posPoint.toString());
-//			System.out.println("Solution Path: ");
-//			System.out.println(getSolutionPathString());
-//			System.out.println("Total number of searched nodes:"
-//					+ searchedNodesNum);
-//			System.out.println("Length of the solution path is:"
-//					+ currentNode.getNodeDepth());
-
-		} else {
-			// into the file
-			// pw.println("No solution. Path Finding not Completed");
-			// pw.println("Begin state:" + beginNode.toString());
-			// pw.println("End state:" + endNode.toString());
-			// pw.println("Total number of searched nodes:" + searchedNodesNum);
-
-			// to the console
-//			System.out.println("No solution. Path Finding not Completed");
-//			System.out.println("Begin state:" + beginNode.posPoint.toString());
-//			System.out.println("End state:" + endNode.posPoint.toString());
-//			System.out.println("Total number of searched nodes:"
-//					+ searchedNodesNum);
-
-		}
 		// close the file
 		if (flag)
 			pw.close();
@@ -306,17 +264,33 @@ public class SimpleAStarSearch {
 																				// expensive
 	}
 
-	private int f1(SimpleAStarNode aNode) { // Manhattan distance
+	/** 
+	* @Title: f1 
+	* @Description: Manhattan distance
+	* @param @param aNode
+	* @param @return
+	* @return int    
+	* @throws 
+	*/ 
+	
+	private int f1(SimpleAStarNode aNode) { 
 
-//		System.out.println("anode: " + aNode.posPoint + "beginNode"
-//				+ beginNode.posPoint);
 		int distance = (int) (aNode.posPoint.distance(beginNode.posPoint));
 		int distance2 = (int) (aNode.posPoint.distance(endNode.posPoint));
 		return (distance + distance2);
 
 	}
 
-	private int f2(SimpleAStarNode aNode) { // cost to change direction
+	/** 
+	* @Title: f2 
+	* @Description: cost to change direction
+	* @param @param aNode
+	* @param @return
+	* @return int    
+	* @throws 
+	*/ 
+	
+	private int f2(SimpleAStarNode aNode) { 
 		if (aNode.getDirection() == direction)
 			return 0;
 
@@ -324,13 +298,31 @@ public class SimpleAStarSearch {
 
 	}
 
-	private int f3(SimpleAStarNode aNode) { // step cost
+	/** 
+	* @Title: f3 
+	* @Description: step cost
+	* @param @param aNode
+	* @param @return
+	* @return int    
+	* @throws 
+	*/ 
+	
+	private int f3(SimpleAStarNode aNode) { 
 
 		return aNode.getNodeDepth();
 
 	}
 
-	private int f4(SimpleAStarNode aNode) { // step from parent
+	/** 
+	* @Title: f4 
+	* @Description: step from parent
+	* @param @param aNode
+	* @param @return
+	* @return int    
+	* @throws 
+	*/ 
+	
+	private int f4(SimpleAStarNode aNode) { 
 		if (aNode.getParent() == null)
 			return 0;
 		return (int) (aNode.getPos()).distance(aNode.getParent().posPoint);
@@ -358,8 +350,6 @@ public class SimpleAStarSearch {
 
 		int distanceX = ePoint.x - bPoint.x;
 		int distanceY = ePoint.y - bPoint.y;
-//		System.out.println(ePoint + " " + bPoint);
-//		System.out.println(distanceX + " " + distanceY);
 //		// walk a step according to the direction
 		if (distanceX == 0 && distanceY >= 0) {
 			direction = Direction.SOUTH;
@@ -404,7 +394,6 @@ public class SimpleAStarSearch {
 			else
 				direction = Direction.SOUTH;
 		}
-//		System.out.println(direction);
 		return direction;
 	}
 
@@ -423,7 +412,6 @@ public class SimpleAStarSearch {
 					nearestPoint = key;
 				}
 			}
-			//System.out.println("1: nearest point" + nearestPoint); 
 			return nearestPoint;
 		} else {
 		/**it is walkable**/
@@ -443,7 +431,6 @@ public class SimpleAStarSearch {
 					nearestDis = key.distance(point);
 					nearestPoint = key;
 				}
-				//System.out.println("2: nearest point" + nearestPoint); 
 			}
 			
 			if(nearestPoint!=null)
@@ -463,7 +450,6 @@ public class SimpleAStarSearch {
 						nearestPoint = key3;
 					}
 				}
-				//System.out.println("3: nearest point" + nearestPoint); 
 				return null;
 			
 			}
@@ -472,7 +458,6 @@ public class SimpleAStarSearch {
 
 	/**between the destination and beginning**/
 	public boolean couldBePoint(Point point , int startPtOrEndPt) {
-		// System.out.println("get begin point"+getBeginPoint());
 		double disB = point.distance(getBeginPoint());
 		double disC = point.distance(getEndPoint());
 		double disA = getBeginPoint().distance(getEndPoint());
@@ -482,10 +467,6 @@ public class SimpleAStarSearch {
 		else 
 			cosA = (disA * disA + disC * disC - disB * disB)/ (2 * disA * disC); // cosA = (a^2+c^2-b^2)/2ac
 		if (cosA>0){ // most be obtuse angle
-//			if(startPtOrEndPt == Constant.BEGIN_POINT)
-//				System.out.println("begin point cosA"+point + " " + cosA);
-//			else 
-//				System.out.println("end point cosA"+point+ " " + cosA);
 			return true;
 		}
 		return false;

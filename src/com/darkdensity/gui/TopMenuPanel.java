@@ -21,6 +21,7 @@ import com.sun.xml.internal.ws.client.ContentNegotiation;
  * 
 * @ClassName: TopMenuPanel
 * @Description: top menu panel, provide the user with information 
+* of how much resource he have 
 * about the resource he have
 * @author Team A1
 * @date 19 Mar 2014 15:50:19
@@ -40,6 +41,7 @@ public class TopMenuPanel extends AbstractPanel {
 		setSize(menu.getWidth(null), menu.getHeight(null));// set the size
 //		setBackground(Color.red);
 		
+		//add lables for resource
 		lblFood = new JLabel();
 		lblIron = new JLabel();
 		lblWood = new JLabel();
@@ -79,12 +81,18 @@ public class TopMenuPanel extends AbstractPanel {
 		add(lblSurvivor);
 	}
 
+	/**
+	 * paint the panel
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.drawImage(menu, 0, 0, this);
 	}
 	
+	/**
+	 * update the resource information
+	 */
 	public void update(long elapsedtime) { // 1000 millisecond = 1 second
 		leftTime = GameWorld.getTimeLeft();
 		int leftMinute = (int) (leftTime/(1000*60));

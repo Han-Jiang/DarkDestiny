@@ -21,30 +21,24 @@ import com.darkdensity.tile.Building;
 import com.darkdensity.tile.Tile;
 
 /**
- * ****************************************
  * 
- * @ClassName: SpritePanel **************************************** Attributes:
- *             private Image dbImage; private Graphics dbGraphics; private int
- *             gameWorld.iRenderX; private int gameWorld.iRenderY;
- * 
- *             private tileManager tileManager;
- * 
- *             BufferedImage bf; JLabel label;
- *             ***************************************** Methods: public
- *             SpritePanel(tileManager tileManager,JFrame frame); public void
- *             paintComponent(Graphics g); public int getgameWorld.iRenderX();
- *             public void setgameWorld.iRenderX(int gameWorld.iRenderX) ;
- *             public int getgameWorld.iRenderY(); public void
- *             setgameWorld.iRenderY(int gameWorld.iRenderY) ; public void
- *             reset();
+* @ClassName: TilePanel
+* @Description: Tile panel is responsible for contain the sprite and buildings
+* @author Team A1
+* @date Mar 28, 2014 2:11:13 AM
  */
-
 public class TilePanel extends JPanel implements MouseListener,
 		MouseMotionListener {
 	private TileManager tileManager;
 	private GameWorld gameWorld;
 	private FocusManager focusManager;
 
+	/**
+	 * 
+	* <p>Title: </p>
+	* <p>Description: </p> construct a new tile panel with a new tile manager
+	* @param tileManager
+	 */
 	public TilePanel(TileManager tileManager) {
 		this.gameWorld = tileManager.getGameWorld();
 		setSize(gameWorld.getWorldSize().width, gameWorld.getWorldSize().height);
@@ -58,6 +52,9 @@ public class TilePanel extends JPanel implements MouseListener,
 		this.addMouseMotionListener(this);
 	}
 
+	/**
+	 * paint the tile panel
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
@@ -81,6 +78,7 @@ public class TilePanel extends JPanel implements MouseListener,
 		}
 	}
 
+	//mouse listener for all the tiles
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		ArrayList<Tile> focusTiles = new ArrayList<Tile>();
@@ -135,16 +133,40 @@ public class TilePanel extends JPanel implements MouseListener,
 		this.gameWorld.dispatchEvent(e);
 	}
 
+	/**
+	 * 
+	* @Title: initTile 
+	* @Description: initial tile, set it to visible and add it this panel
+	* @param @param t
+	* @return void    
+	* @throws
+	 */
 	public void initTile(Tile t) {
 		t.setVisible(true);
 		t.setTilePanel(this);
 		this.add(t);
 	}
 
+	/**
+	 * 
+	* @Title: removeTile 
+	* @Description: remove the tile
+	* @param @param t
+	* @return void    
+	* @throws
+	 */
 	public void removeTile(Tile t) {
 		this.remove(t);
 	}
 
+	/**
+	 * 
+	* @Title: setFocusManager 
+	* @Description: set focus manager
+	* @param @param focusManager
+	* @return void    
+	* @throws
+	 */
 	public void setFocusManager(FocusManager focusManager) {
 		this.focusManager = focusManager;
 	}

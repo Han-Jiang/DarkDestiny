@@ -13,7 +13,9 @@ import com.darkdensity.net.lobby.GameLobby;
 import com.darkdensity.net.lobby.GameLobbyClient;
 import com.darkdensity.setting.Config;
 import com.darkdensity.setting.Constant.GameMode;
-
+/** 
+* @author Team A1 - Hei Yin Wong
+*/
 public class GameClientIO {
 
 	private Socket socket;

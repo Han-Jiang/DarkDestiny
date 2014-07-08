@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 /**
  * @ClassName: ControlManager
  * @Description: to manage the command
- * @author Team A1 - Han Jiang & Ting Yuen Lam
+ * @author Team A1 - Han Jiang , Ting Yuen Lam & Hei Yin Wong
  */
 
 public class ControlManager implements KeyListener, MouseListener,
@@ -63,6 +63,13 @@ public class ControlManager implements KeyListener, MouseListener,
 		gameWorld.addMouseWheelListener(this);
 	}
 
+	/**
+	 * 
+	* <p>Title: </p>Constructor
+	* <p>Description: </p> add  listener to a JPanel and a JFrame 
+	* @param component
+	* @param frame
+	 */
 	public ControlManager(JPanel component, JFrame frame) {
 		this.jPanel = component;
 		frame.addKeyListener(this);
@@ -71,14 +78,38 @@ public class ControlManager implements KeyListener, MouseListener,
 		jPanel.addMouseWheelListener(this);
 	}
 
+	/**
+	 * 
+	* @Title: getMouseX 
+	* @Description: get the currnet mouse X posistion
+	* @param @return
+	* @return int    
+	* @throws
+	 */
 	public int getMouseX() {
 		return mouseX;
 	}
 
+	/**
+	 * 
+	* @Title: getMouseY 
+	* @Description: get the currnet mouse Y posistion
+	* @param @return
+	* @return int    
+	* @throws
+	 */
 	public int getMouseY() {
 		return mouseY;
 	}
 
+	/**
+	 * 
+	* @Title: dragActionDrawer 
+	* @Description: draw a rectangle when the mouse drag
+	* @param @param g
+	* @return void    
+	* @throws
+	 */
 	public void dragActionDrawer(Graphics g) {
 		if (dragging) {
 			g.setColor(Color.GREEN);
@@ -99,6 +130,7 @@ public class ControlManager implements KeyListener, MouseListener,
 		mouseX = e.getX();
 		mouseY = e.getY();
 
+		// call the listener
 		if (moveListener != null) {
 			moveListener.move(mouseX, mouseY);
 		}
@@ -133,7 +165,7 @@ public class ControlManager implements KeyListener, MouseListener,
 				leftButtonListener.press(sx, sy);
 			}
 		}
-
+		//right button click press
 		if (e.getButton() == MOUSE_RIGHT_BUTTON) {
 			isRightButtonPressed = true;
 			dragging = false;
@@ -148,10 +180,6 @@ public class ControlManager implements KeyListener, MouseListener,
 		// TODO Auto-generated method stub
 		ex = e.getX();
 		ey = e.getY();
-
-		if (isRightButtonPressed) {
-
-		}
 
 		if (isLeftButtonPressed) {
 			// Only when the drag distance is bigger than 30 pixel
@@ -303,7 +331,7 @@ public class ControlManager implements KeyListener, MouseListener,
 		public void move(int x, int y);
 	}
 
-	// mouse exited
+	// mouse exited listener
 	public ControlManager addMouseExitedListener(MouseExitedListener callBack) {
 		this.mouseExitedListener = callBack;
 		return this;
@@ -313,6 +341,8 @@ public class ControlManager implements KeyListener, MouseListener,
 		public void mouseExited();
 	}
 
+	
+	//mouse enter listner
 	public ControlManager addMouseEnteredListener(MouseEnteredListener callBack) {
 		this.mouseEnteredListener = callBack;
 		return this;
