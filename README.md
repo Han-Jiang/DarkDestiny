@@ -25,7 +25,7 @@ Game Screenshots:
 ##Mutiple palyer panel
 ![Game lobby](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/MultiPlayer.png)  
 ##Loading
-![](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/zombie%20win.png)
+![](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/loading%202.png)
 ##In the game
 ![In the game](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/In%20the%20game.png
  "In the game")
