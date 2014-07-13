@@ -24,14 +24,14 @@ Game Screenshots:
 ![Game lobby](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/game%20lobby.png)   
 ##Mutiple palyer panel
 ![Game lobby](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/MultiPlayer.png)  
-
+##Loading
+![](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/zombie%20win.png)
 ##In the game
 ![In the game](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/In%20the%20game.png
- "In the game")  
-
-
+ "In the game")
+![](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/chatting.png)  
 ## Zombie Win
-![](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/zombie%20win2.png)  
+![](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/zombie%20win.png)  
 
 
 
