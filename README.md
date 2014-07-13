@@ -30,6 +30,9 @@ Game Screenshots:
  "In the game")  
 
 
+## Zombie Win
+![](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/zombie%20win2.png)  
+
 
 
 To do:
