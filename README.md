@@ -20,9 +20,12 @@ or talk to them via voice chat.
 Just download the game and have a look youself.
 
 Game Screenshots:
-Game lobby
+##Game lobby
 ![Game lobby](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/game%20lobby.png)   
+##Mutiple palyer panel
+![Game lobby](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/MultiPlayer.png)  
 
+##In the game
 ![In the game](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/In%20the%20game.png
  "In the game")  
 
