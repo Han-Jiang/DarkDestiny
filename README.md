@@ -21,17 +21,16 @@ Just download the game and have a look youself.
 
 Game Screenshots:
 ##Game lobby
-![Game lobby](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/game%20lobby.png)   
+![Game lobby](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/game%20lobby.jpg)   
 ##Mutiple palyer panel
-![Game lobby](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/MultiPlayer.png)  
+![Game lobby](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/MultiPlayer.jpg)  
 ##Loading
-![](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/loading%202.png)
-##In the game
-![In the game](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/In%20the%20game.png
+![](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/loading%202.jpg)
+![In the game](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/In%20the%20game.jpg
  "In the game")
-![](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/chatting.png)  
+![](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/chatting.jpg)  
 ## Zombie Win
-![](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/Zombie%20Win.png)  
+![](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/Zombie%20Win.jpg)  
 
 
 
