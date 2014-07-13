@@ -26,6 +26,8 @@ Game Screenshots:
 ![Game lobby](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/MultiPlayer.jpg)  
 ##Loading
 ![](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/loading%202.jpg)
+
+##In the game
 ![In the game](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/In%20the%20game.jpg
  "In the game")
 ![](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/chatting.jpg)  
