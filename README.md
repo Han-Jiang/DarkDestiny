@@ -20,11 +20,14 @@ or talk to them via voice chat.
 Just download the game and have a look youself.
 
 Game Screenshots:
+Game lobby
+![Game lobby](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/game%20lobby.png)   
+
 ![In the game](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/In%20the%20game.png
  "In the game")  
 
 
-![Game lobby](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/game%20lobby.png)   
+
 
 To do:
 Game UI Refine
