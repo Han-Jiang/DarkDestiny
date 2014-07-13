@@ -31,7 +31,7 @@ Game Screenshots:
  "In the game")
 ![](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/chatting.png)  
 ## Zombie Win
-![](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/zombie%20win.png)  
+![](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/Zombie%20Win.png)  
 
 
 
