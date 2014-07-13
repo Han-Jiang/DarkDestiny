@@ -19,6 +19,10 @@ or talk to them via voice chat.
 
 Just download the game and have a look youself.
 
+Game Screenshots:
+![github](https://raw.githubusercontent.com/Han-Jiang/DarkDestiny/master/README/In%20the%20game.png
+ "In the game")  
+
 To do:
 Game UI Refine
 
