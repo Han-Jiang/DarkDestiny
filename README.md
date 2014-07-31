@@ -34,7 +34,7 @@ Mac 10.9 Mavericks 10.9.0 or above
 2. Change the JRE environment to Java 1.6_65 as there are some new bugs in 1.7
 
 3. Allocate at least 1 GB memory to your JVM
-     (i.e.: Add  “-Xms1024m -Xmx1024m“ to your JVM argument)
+     (i.e.: Add  "`-Xms1024m -Xmx1024m`" to your JVM argument)
 
 4. Click “Run” in your IDE, and choose the main class as com.darkdensity.main.Main
 * Make sure that you are using Java 1.6_65 and sufficient memory is allocated to your JVM, If you are running on Java1.7, your screen may keep flashing and the control is not stable. This is a bug in Java 1.7 and old version Java
