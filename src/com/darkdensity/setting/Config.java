@@ -56,7 +56,7 @@ public class Config {
 	public static final int ZOMBIE1_REVEAL = 400;
 
 	// General setting
-	public static boolean DEBUGMODE = false;
+	public static boolean DEBUGMODE = true;
 	public static int PANEL_WIDTH = 1280;
 	public static int PANEL_HEIGHT = 800;
 	public static int SENSITIVE_AREA = 20;
@@ -168,7 +168,7 @@ public class Config {
 	public static final String CHAT_GROUP = "225.4.5.6";
 	public static boolean IS_NETWORK_MODE = false;
 
-	public static final int FRAMES_PER_SECOND = 48;
+	public static final int FRAMES_PER_SECOND = 96;
 	public static final int SKIP_TICKS = 1000 / FRAMES_PER_SECOND;
 
 	public static int RESOURCE_DELAY = 20;

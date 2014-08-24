@@ -140,4 +140,7 @@ public class ScreenManager {
 		//Get a full screen JFrame 
 		return (JFrame) device.getFullScreenWindow();
 	}
+	
+	
+
 }

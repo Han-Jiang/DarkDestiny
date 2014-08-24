@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,6 +38,14 @@ public class ImageLoader {
 	 */
 	public static Image loadImage(String filePath) {
 		if (!IMAGE_CACHE.containsKey(filePath)) {
+			File dir = new File(filePath);
+			if(!dir.exists()){
+				System.err.println("Can not find "+filePath);
+			}else{
+				System.out.println("Find image "+filePath);
+			}
+			
+			
 			Image image = new ImageIcon(filePath).getImage();
 			if (image != null) {
 				IMAGE_CACHE.put(filePath, image);

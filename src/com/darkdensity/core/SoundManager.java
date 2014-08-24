@@ -38,7 +38,6 @@ public class SoundManager{
 		soundPlayer.play();
 	
 		soundManager.threadPool.shutdown();
-		
 	}
 	
 	/**
